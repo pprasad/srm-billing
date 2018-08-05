@@ -1,0 +1,571 @@
+07-19 19:56:24.561 [AWT-EventQueue-0] [DEBUG] - o.s.c.e.StandardEnvironment.addLast 109: Adding [systemProperties] PropertySource with lowest search precedence
+07-19 19:56:24.568 [AWT-EventQueue-0] [DEBUG] - o.s.c.e.StandardEnvironment.addLast 109: Adding [systemEnvironment] PropertySource with lowest search precedence
+07-19 19:56:24.570 [AWT-EventQueue-0] [DEBUG] - o.s.c.e.StandardEnvironment.<init> 127: Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+07-19 19:56:24.625 [AWT-EventQueue-0] [INFO] - o.s.c.a.AnnotationConfigApplicationContext.prepareRefresh 581: Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@25f5ff9e: startup date [Thu Jul 19 19:56:24 IST 2018]; root of context hierarchy
+07-19 19:56:24.627 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.AnnotationConfigApplicationContext.obtainFreshBeanFactory 615: Bean factory for org.springframework.context.annotation.AnnotationConfigApplicationContext@25f5ff9e: org.springframework.beans.factory.support.DefaultListableBeanFactory@49bc36a3: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.event.internalEventListenerProcessor,org.springframework.context.event.internalEventListenerFactory,appConfig]; root of factory hierarchy
+07-19 19:56:24.640 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+07-19 19:56:24.641 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+07-19 19:56:24.655 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' to allow for resolving potential circular references
+07-19 19:56:24.658 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+07-19 19:56:24.681 [AWT-EventQueue-0] [DEBUG] - o.s.c.e.StandardEnvironment.addLast 109: Adding [systemProperties] PropertySource with lowest search precedence
+07-19 19:56:24.682 [AWT-EventQueue-0] [DEBUG] - o.s.c.e.StandardEnvironment.addLast 109: Adding [systemEnvironment] PropertySource with lowest search precedence
+07-19 19:56:24.683 [AWT-EventQueue-0] [DEBUG] - o.s.c.e.StandardEnvironment.<init> 127: Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+07-19 19:56:24.686 [AWT-EventQueue-0] [DEBUG] - o.s.c.i.s.PathMatchingResourcePatternResolver.findAllClassPathResources 317: Resolved classpath location [com/srm/services/] to resources [URL [file:/C:/Users/umprasad/git/srm-billing/srm-standalone/target/classes/com/srm/services/]]
+07-19 19:56:24.688 [AWT-EventQueue-0] [DEBUG] - o.s.c.i.s.PathMatchingResourcePatternResolver.doFindMatchingFileSystemResources 711: Looking for matching resources in directory tree [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services]
+07-19 19:56:24.688 [AWT-EventQueue-0] [DEBUG] - o.s.c.i.s.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles 773: Searching directory [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services] for files matching pattern [C:/Users/umprasad/git/srm-billing/srm-standalone/target/classes/com/srm/services/*/**/*.class]
+07-19 19:56:24.691 [AWT-EventQueue-0] [DEBUG] - o.s.c.i.s.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles 773: Searching directory [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone] for files matching pattern [C:/Users/umprasad/git/srm-billing/srm-standalone/target/classes/com/srm/services/*/**/*.class]
+07-19 19:56:24.692 [AWT-EventQueue-0] [DEBUG] - o.s.c.i.s.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles 773: Searching directory [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\config] for files matching pattern [C:/Users/umprasad/git/srm-billing/srm-standalone/target/classes/com/srm/services/*/**/*.class]
+07-19 19:56:24.694 [AWT-EventQueue-0] [DEBUG] - o.s.c.i.s.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles 773: Searching directory [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller] for files matching pattern [C:/Users/umprasad/git/srm-billing/srm-standalone/target/classes/com/srm/services/*/**/*.class]
+07-19 19:56:24.702 [AWT-EventQueue-0] [DEBUG] - o.s.c.i.s.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles 773: Searching directory [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch] for files matching pattern [C:/Users/umprasad/git/srm-billing/srm-standalone/target/classes/com/srm/services/*/**/*.class]
+07-19 19:56:24.705 [AWT-EventQueue-0] [DEBUG] - o.s.c.i.s.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles 773: Searching directory [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\utils] for files matching pattern [C:/Users/umprasad/git/srm-billing/srm-standalone/target/classes/com/srm/services/*/**/*.class]
+07-19 19:56:24.708 [AWT-EventQueue-0] [DEBUG] - o.s.c.i.s.PathMatchingResourcePatternResolver.findPathMatchingResources 483: Resolved location pattern [classpath*:com/srm/services/*/**/*.class] to resources [file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\config\AppConfig.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$1.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$2.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$3.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$4.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm$1.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm$2.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm$3.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\PurchasesForm.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\TradersForm.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\ApplicationLauncher$1.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\ApplicationLauncher.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm$1.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm$2.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm$3.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm.class], file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\utils\StandaloneUtils.class]]
+07-19 19:56:24.709 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\config\AppConfig.class]
+07-19 19:56:24.724 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\config\AppConfig.class]
+07-19 19:56:24.725 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$1.class]
+07-19 19:56:24.727 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$1.class]
+07-19 19:56:24.727 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$2.class]
+07-19 19:56:24.729 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$2.class]
+07-19 19:56:24.729 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$3.class]
+07-19 19:56:24.730 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$3.class]
+07-19 19:56:24.731 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$4.class]
+07-19 19:56:24.732 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm$4.class]
+07-19 19:56:24.733 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm.class]
+07-19 19:56:24.736 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\CategoryForm.class]
+07-19 19:56:24.737 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm$1.class]
+07-19 19:56:24.738 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm$1.class]
+07-19 19:56:24.739 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm$2.class]
+07-19 19:56:24.741 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm$2.class]
+07-19 19:56:24.741 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm$3.class]
+07-19 19:56:24.743 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm$3.class]
+07-19 19:56:24.743 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm.class]
+07-19 19:56:24.746 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 286: Identified candidate component class: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\LandingForm.class]
+07-19 19:56:24.746 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\PurchasesForm.class]
+07-19 19:56:24.748 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\PurchasesForm.class]
+07-19 19:56:24.749 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\TradersForm.class]
+07-19 19:56:24.750 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\controller\TradersForm.class]
+07-19 19:56:24.751 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\ApplicationLauncher$1.class]
+07-19 19:56:24.752 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\ApplicationLauncher$1.class]
+07-19 19:56:24.752 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\ApplicationLauncher.class]
+07-19 19:56:24.753 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\ApplicationLauncher.class]
+07-19 19:56:24.754 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm$1.class]
+07-19 19:56:24.755 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm$1.class]
+07-19 19:56:24.756 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm$2.class]
+07-19 19:56:24.758 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm$2.class]
+07-19 19:56:24.758 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm$3.class]
+07-19 19:56:24.760 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm$3.class]
+07-19 19:56:24.761 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm.class]
+07-19 19:56:24.763 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 286: Identified candidate component class: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\launch\LoginForm.class]
+07-19 19:56:24.764 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 275: Scanning file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\utils\StandaloneUtils.class]
+07-19 19:56:24.770 [AWT-EventQueue-0] [TRACE] - o.s.c.a.ClassPathBeanDefinitionScanner.findCandidateComponents 298: Ignored because not matching any filter: file [C:\Users\umprasad\git\srm-billing\srm-standalone\target\classes\com\srm\services\standalone\utils\StandaloneUtils.class]
+07-19 19:56:24.817 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForBeanMethod 256: Registering bean definition for @Bean method com.srm.services.standalone.config.AppConfig.getTradersForm()
+07-19 19:56:24.818 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForBeanMethod 256: Registering bean definition for @Bean method com.srm.services.standalone.config.AppConfig.getPurchasesForm()
+07-19 19:56:24.820 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForBeanMethod 256: Registering bean definition for @Bean method com.srm.services.standalone.config.AppConfig.getCategoryForm()
+07-19 19:56:24.908 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.ConfigurationClassEnhancer.enhance 109: Successfully enhanced com.srm.services.standalone.config.AppConfig; enhanced class name is: com.srm.services.standalone.config.AppConfig$$EnhancerBySpringCGLIB$$d0d8a7fa
+07-19 19:56:24.909 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.ConfigurationClassPostProcessor.enhanceConfigurationClasses 409: Replacing bean definition 'appConfig' existing class 'com.srm.services.standalone.config.AppConfig' with enhanced class 'com.srm.services.standalone.config.AppConfig$$EnhancerBySpringCGLIB$$d0d8a7fa'
+07-19 19:56:24.913 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+07-19 19:56:24.914 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+07-19 19:56:24.915 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' to allow for resolving potential circular references
+07-19 19:56:24.916 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+07-19 19:56:24.916 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+07-19 19:56:24.917 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+07-19 19:56:24.918 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' to allow for resolving potential circular references
+07-19 19:56:24.918 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+07-19 19:56:24.919 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+07-19 19:56:24.919 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+07-19 19:56:24.932 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' to allow for resolving potential circular references
+07-19 19:56:24.932 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+07-19 19:56:24.932 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+07-19 19:56:24.932 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+07-19 19:56:24.933 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor' to allow for resolving potential circular references
+07-19 19:56:24.933 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+07-19 19:56:24.934 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+07-19 19:56:24.934 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+07-19 19:56:24.935 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor' to allow for resolving potential circular references
+07-19 19:56:24.935 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+07-19 19:56:24.938 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.AnnotationConfigApplicationContext.initMessageSource 728: Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@447e6c2b]
+07-19 19:56:24.941 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.AnnotationConfigApplicationContext.initApplicationEventMulticaster 752: Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@5b5f58a2]
+07-19 19:56:24.947 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.preInstantiateSingletons 745: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@49bc36a3: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.event.internalEventListenerProcessor,org.springframework.context.event.internalEventListenerFactory,appConfig,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor,landingForm,loginForm,getTradersForm,getPurchasesForm,getCategoryForm]; root of factory hierarchy
+07-19 19:56:24.947 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+07-19 19:56:24.947 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+07-19 19:56:24.948 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+07-19 19:56:24.948 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+07-19 19:56:24.948 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+07-19 19:56:24.949 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'org.springframework.context.event.internalEventListenerProcessor'
+07-19 19:56:24.955 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'org.springframework.context.event.internalEventListenerProcessor' to allow for resolving potential circular references
+07-19 19:56:24.960 [AWT-EventQueue-0] [TRACE] - o.s.c.i.s.SpringFactoriesLoader.loadFactories 89: Loaded [org.springframework.beans.BeanInfoFactory] names: [org.springframework.beans.ExtendedBeanInfoFactory]
+07-19 19:56:24.961 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 265: Getting BeanInfo for class [org.springframework.context.event.EventListenerMethodProcessor]
+07-19 19:56:24.965 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 284: Caching PropertyDescriptors for class [org.springframework.context.event.EventListenerMethodProcessor]
+07-19 19:56:24.965 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'applicationContext' of type [org.springframework.context.ApplicationContext]
+07-19 19:56:24.968 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'class' of type [java.lang.Class]
+07-19 19:56:24.971 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'org.springframework.context.event.internalEventListenerProcessor'
+07-19 19:56:24.972 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+07-19 19:56:24.972 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'org.springframework.context.event.internalEventListenerFactory'
+07-19 19:56:24.973 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'org.springframework.context.event.internalEventListenerFactory' to allow for resolving potential circular references
+07-19 19:56:24.975 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 265: Getting BeanInfo for class [org.springframework.context.event.DefaultEventListenerFactory]
+07-19 19:56:24.980 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 284: Caching PropertyDescriptors for class [org.springframework.context.event.DefaultEventListenerFactory]
+07-19 19:56:24.981 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'class' of type [java.lang.Class]
+07-19 19:56:24.982 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'order' of type [int]
+07-19 19:56:24.984 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'org.springframework.context.event.internalEventListenerFactory'
+07-19 19:56:24.984 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'appConfig'
+07-19 19:56:24.985 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'appConfig'
+07-19 19:56:24.986 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'appConfig' to allow for resolving potential circular references
+07-19 19:56:24.987 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 265: Getting BeanInfo for class [com.srm.services.standalone.config.AppConfig$$EnhancerBySpringCGLIB$$d0d8a7fa]
+07-19 19:56:24.994 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 284: Caching PropertyDescriptors for class [com.srm.services.standalone.config.AppConfig$$EnhancerBySpringCGLIB$$d0d8a7fa]
+07-19 19:56:24.995 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'beanFactory' of type [org.springframework.beans.factory.BeanFactory]
+07-19 19:56:24.996 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'categoryForm' of type [com.srm.services.standalone.controller.CategoryForm]
+07-19 19:56:24.999 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'class' of type [java.lang.Class]
+07-19 19:56:25.000 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'purchasesForm' of type [com.srm.services.standalone.controller.PurchasesForm]
+07-19 19:56:25.000 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'tradersForm' of type [com.srm.services.standalone.controller.TradersForm]
+07-19 19:56:25.002 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'appConfig'
+07-19 19:56:25.003 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+07-19 19:56:25.003 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+07-19 19:56:25.004 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'landingForm'
+07-19 19:56:25.004 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'landingForm'
+07-19 19:56:25.472 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.InjectionMetadata.checkConfigMembers 72: Registered injected element on class [com.srm.services.standalone.controller.LandingForm]: AutowiredFieldElement for com.srm.services.standalone.controller.CategoryForm com.srm.services.standalone.controller.LandingForm.categoryForm
+07-19 19:56:25.474 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.InjectionMetadata.checkConfigMembers 72: Registered injected element on class [com.srm.services.standalone.controller.LandingForm]: AutowiredFieldElement for com.srm.services.standalone.controller.TradersForm com.srm.services.standalone.controller.LandingForm.tradersForm
+07-19 19:56:25.474 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.InjectionMetadata.checkConfigMembers 72: Registered injected element on class [com.srm.services.standalone.controller.LandingForm]: AutowiredFieldElement for com.srm.services.standalone.controller.PurchasesForm com.srm.services.standalone.controller.LandingForm.purchasesForm
+07-19 19:56:25.475 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'landingForm' to allow for resolving potential circular references
+07-19 19:56:25.476 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 265: Getting BeanInfo for class [com.srm.services.standalone.controller.LandingForm]
+07-19 19:56:25.521 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 284: Caching PropertyDescriptors for class [com.srm.services.standalone.controller.LandingForm]
+07-19 19:56:25.522 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'JMenuBar' of type [javax.swing.JMenuBar]
+07-19 19:56:25.523 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'accessibleContext' of type [javax.accessibility.AccessibleContext]
+07-19 19:56:25.524 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'active' of type [boolean]
+07-19 19:56:25.525 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentX' of type [float]
+07-19 19:56:25.526 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentY' of type [float]
+07-19 19:56:25.529 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTop' of type [boolean]
+07-19 19:56:25.531 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTopSupported' of type [boolean]
+07-19 19:56:25.532 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'autoRequestFocus' of type [boolean]
+07-19 19:56:25.532 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'background' of type [java.awt.Color]
+07-19 19:56:25.533 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bounds' of type [java.awt.Rectangle]
+07-19 19:56:25.534 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bufferStrategy' of type [java.awt.image.BufferStrategy]
+07-19 19:56:25.534 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'component'
+07-19 19:56:25.535 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'componentCount' of type [int]
+07-19 19:56:25.537 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'components' of type [[Ljava.awt.Component;]
+07-19 19:56:25.538 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'containerListeners' of type [[Ljava.awt.event.ContainerListener;]
+07-19 19:56:25.540 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'contentPane' of type [java.awt.Container]
+07-19 19:56:25.545 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'cursor' of type [int]
+07-19 19:56:25.547 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'cursorType' of type [int]
+07-19 19:56:25.548 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultCloseOperation' of type [int]
+07-19 19:56:25.549 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultLookAndFeelDecorated' of type [boolean]
+07-19 19:56:25.551 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'enabled' of type [boolean]
+07-19 19:56:25.552 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'extendedState' of type [int]
+07-19 19:56:25.552 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRoot' of type [boolean]
+07-19 19:56:25.553 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRootAncestor' of type [java.awt.Container]
+07-19 19:56:25.578 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusOwner' of type [java.awt.Component]
+07-19 19:56:25.579 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalKeys'
+07-19 19:56:25.580 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicy' of type [java.awt.FocusTraversalPolicy]
+07-19 19:56:25.581 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicyProvider' of type [boolean]
+07-19 19:56:25.581 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicySet' of type [boolean]
+07-19 19:56:25.582 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusable' of type [boolean]
+07-19 19:56:25.583 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindow' of type [boolean]
+07-19 19:56:25.588 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindowState' of type [boolean]
+07-19 19:56:25.590 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focused' of type [boolean]
+07-19 19:56:25.599 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'font' of type [java.awt.Font]
+07-19 19:56:25.600 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'foreground' of type [java.awt.Color]
+07-19 19:56:25.601 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'glassPane' of type [java.awt.Component]
+07-19 19:56:25.601 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'graphics' of type [java.awt.Graphics]
+07-19 19:56:25.602 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImage' of type [java.awt.Image]
+07-19 19:56:25.602 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImages' of type [java.util.List]
+07-19 19:56:25.603 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'inputContext' of type [java.awt.im.InputContext]
+07-19 19:56:25.604 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'insets' of type [java.awt.Insets]
+07-19 19:56:25.605 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layeredPane' of type [javax.swing.JLayeredPane]
+07-19 19:56:25.605 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layout' of type [java.awt.LayoutManager]
+07-19 19:56:25.606 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locale' of type [java.util.Locale]
+07-19 19:56:25.607 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'location' of type [java.awt.Point]
+07-19 19:56:25.607 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationByPlatform' of type [boolean]
+07-19 19:56:25.608 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationRelativeTo' of type [java.awt.Component]
+07-19 19:56:25.609 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'maximizedBounds' of type [java.awt.Rectangle]
+07-19 19:56:25.610 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'maximumSize' of type [java.awt.Dimension]
+07-19 19:56:25.612 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'menuBar' of type [java.awt.MenuBar]
+07-19 19:56:25.613 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'minimumSize' of type [java.awt.Dimension]
+07-19 19:56:25.614 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modalExclusionType' of type [java.awt.Dialog$ModalExclusionType]
+07-19 19:56:25.614 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'mostRecentFocusOwner' of type [java.awt.Component]
+07-19 19:56:25.615 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'name' of type [java.lang.String]
+07-19 19:56:25.615 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opacity' of type [float]
+07-19 19:56:25.616 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opaque' of type [boolean]
+07-19 19:56:25.616 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'ownedWindows' of type [[Ljava.awt.Window;]
+07-19 19:56:25.617 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'owner' of type [java.awt.Window]
+07-19 19:56:25.618 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'preferredSize' of type [java.awt.Dimension]
+07-19 19:56:25.621 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'resizable' of type [boolean]
+07-19 19:56:25.622 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'rootPane' of type [javax.swing.JRootPane]
+07-19 19:56:25.623 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'shape' of type [java.awt.Shape]
+07-19 19:56:25.625 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'showing' of type [boolean]
+07-19 19:56:25.632 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'size' of type [java.awt.Dimension]
+07-19 19:56:25.633 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'state' of type [int]
+07-19 19:56:25.633 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'title' of type [java.lang.String]
+07-19 19:56:25.634 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'toolkit' of type [java.awt.Toolkit]
+07-19 19:56:25.634 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'transferHandler' of type [javax.swing.TransferHandler]
+07-19 19:56:25.635 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'type' of type [java.awt.Window$Type]
+07-19 19:56:25.635 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'undecorated' of type [boolean]
+07-19 19:56:25.635 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'validateRoot' of type [boolean]
+07-19 19:56:25.636 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'visible' of type [boolean]
+07-19 19:56:25.636 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'warningString' of type [java.lang.String]
+07-19 19:56:25.636 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowFocusListeners' of type [[Ljava.awt.event.WindowFocusListener;]
+07-19 19:56:25.637 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowListeners' of type [[Ljava.awt.event.WindowListener;]
+07-19 19:56:25.637 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowStateListeners' of type [[Ljava.awt.event.WindowStateListener;]
+07-19 19:56:25.643 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.InjectionMetadata.inject 86: Processing injected element of bean 'landingForm': AutowiredFieldElement for com.srm.services.standalone.controller.CategoryForm com.srm.services.standalone.controller.LandingForm.categoryForm
+07-19 19:56:25.652 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'getCategoryForm'
+07-19 19:56:25.653 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'getCategoryForm'
+07-19 19:56:25.654 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'appConfig'
+07-19 19:56:25.932 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'getCategoryForm' to allow for resolving potential circular references
+07-19 19:56:25.932 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 265: Getting BeanInfo for class [com.srm.services.standalone.controller.CategoryForm]
+07-19 19:56:25.946 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 284: Caching PropertyDescriptors for class [com.srm.services.standalone.controller.CategoryForm]
+07-19 19:56:25.948 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'JMenuBar' of type [javax.swing.JMenuBar]
+07-19 19:56:25.950 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'accessibleContext' of type [javax.accessibility.AccessibleContext]
+07-19 19:56:25.951 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'active' of type [boolean]
+07-19 19:56:25.953 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentX' of type [float]
+07-19 19:56:25.954 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentY' of type [float]
+07-19 19:56:25.956 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTop' of type [boolean]
+07-19 19:56:25.957 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTopSupported' of type [boolean]
+07-19 19:56:25.957 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'autoRequestFocus' of type [boolean]
+07-19 19:56:25.958 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'background' of type [java.awt.Color]
+07-19 19:56:25.959 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bounds' of type [java.awt.Rectangle]
+07-19 19:56:25.960 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bufferStrategy' of type [java.awt.image.BufferStrategy]
+07-19 19:56:25.960 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'component'
+07-19 19:56:25.961 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'componentCount' of type [int]
+07-19 19:56:25.962 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'components' of type [[Ljava.awt.Component;]
+07-19 19:56:25.963 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'containerListeners' of type [[Ljava.awt.event.ContainerListener;]
+07-19 19:56:25.964 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'contentPane' of type [java.awt.Container]
+07-19 19:56:25.965 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'cursor' of type [java.awt.Cursor]
+07-19 19:56:25.966 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultCloseOperation' of type [int]
+07-19 19:56:25.967 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultLookAndFeelDecorated' of type [boolean]
+07-19 19:56:25.968 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'enabled' of type [boolean]
+07-19 19:56:25.969 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRoot' of type [boolean]
+07-19 19:56:25.970 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRootAncestor' of type [java.awt.Container]
+07-19 19:56:25.971 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusOwner' of type [java.awt.Component]
+07-19 19:56:25.971 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalKeys'
+07-19 19:56:25.972 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicy' of type [java.awt.FocusTraversalPolicy]
+07-19 19:56:25.972 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicyProvider' of type [boolean]
+07-19 19:56:25.973 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicySet' of type [boolean]
+07-19 19:56:25.974 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusable' of type [boolean]
+07-19 19:56:25.975 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindow' of type [boolean]
+07-19 19:56:25.976 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindowState' of type [boolean]
+07-19 19:56:25.982 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focused' of type [boolean]
+07-19 19:56:25.983 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'font' of type [java.awt.Font]
+07-19 19:56:25.984 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'foreground' of type [java.awt.Color]
+07-19 19:56:25.986 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'glassPane' of type [java.awt.Component]
+07-19 19:56:25.987 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'graphics' of type [java.awt.Graphics]
+07-19 19:56:25.988 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImage' of type [java.awt.Image]
+07-19 19:56:25.989 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImages' of type [java.util.List]
+07-19 19:56:25.994 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'inputContext' of type [java.awt.im.InputContext]
+07-19 19:56:26.002 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'insets' of type [java.awt.Insets]
+07-19 19:56:26.008 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layeredPane' of type [javax.swing.JLayeredPane]
+07-19 19:56:26.016 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layout' of type [java.awt.LayoutManager]
+07-19 19:56:26.020 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locale' of type [java.util.Locale]
+07-19 19:56:26.026 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'location' of type [java.awt.Point]
+07-19 19:56:26.032 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationByPlatform' of type [boolean]
+07-19 19:56:26.036 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationRelativeTo' of type [java.awt.Component]
+07-19 19:56:26.037 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'maximumSize' of type [java.awt.Dimension]
+07-19 19:56:26.038 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'minimumSize' of type [java.awt.Dimension]
+07-19 19:56:26.038 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modal' of type [boolean]
+07-19 19:56:26.039 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modalExclusionType' of type [java.awt.Dialog$ModalExclusionType]
+07-19 19:56:26.040 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modalityType' of type [java.awt.Dialog$ModalityType]
+07-19 19:56:26.040 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'mostRecentFocusOwner' of type [java.awt.Component]
+07-19 19:56:26.041 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'name' of type [java.lang.String]
+07-19 19:56:26.042 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opacity' of type [float]
+07-19 19:56:26.042 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opaque' of type [boolean]
+07-19 19:56:26.043 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'ownedWindows' of type [[Ljava.awt.Window;]
+07-19 19:56:26.044 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'owner' of type [java.awt.Window]
+07-19 19:56:26.045 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'preferredSize' of type [java.awt.Dimension]
+07-19 19:56:26.047 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'resizable' of type [boolean]
+07-19 19:56:26.047 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'rootPane' of type [javax.swing.JRootPane]
+07-19 19:56:26.048 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'shape' of type [java.awt.Shape]
+07-19 19:56:26.051 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'showing' of type [boolean]
+07-19 19:56:26.052 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'size' of type [java.awt.Dimension]
+07-19 19:56:26.052 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'title' of type [java.lang.String]
+07-19 19:56:26.053 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'toolkit' of type [java.awt.Toolkit]
+07-19 19:56:26.053 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'transferHandler' of type [javax.swing.TransferHandler]
+07-19 19:56:26.053 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'type' of type [java.awt.Window$Type]
+07-19 19:56:26.054 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'undecorated' of type [boolean]
+07-19 19:56:26.055 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'validateRoot' of type [boolean]
+07-19 19:56:26.055 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'visible' of type [boolean]
+07-19 19:56:26.056 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'warningString' of type [java.lang.String]
+07-19 19:56:26.057 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowFocusListeners' of type [[Ljava.awt.event.WindowFocusListener;]
+07-19 19:56:26.057 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowListeners' of type [[Ljava.awt.event.WindowListener;]
+07-19 19:56:26.058 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowStateListeners' of type [[Ljava.awt.event.WindowStateListener;]
+07-19 19:56:26.065 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'getCategoryForm'
+07-19 19:56:26.066 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.AutowiredAnnotationBeanPostProcessor.registerDependentBeans 516: Autowiring by type from bean name 'landingForm' to bean named 'getCategoryForm'
+07-19 19:56:26.066 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.InjectionMetadata.inject 86: Processing injected element of bean 'landingForm': AutowiredFieldElement for com.srm.services.standalone.controller.TradersForm com.srm.services.standalone.controller.LandingForm.tradersForm
+07-19 19:56:26.068 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'getTradersForm'
+07-19 19:56:26.068 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'getTradersForm'
+07-19 19:56:26.069 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'appConfig'
+07-19 19:56:26.116 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'getTradersForm' to allow for resolving potential circular references
+07-19 19:56:26.116 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 265: Getting BeanInfo for class [com.srm.services.standalone.controller.TradersForm]
+07-19 19:56:26.120 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 284: Caching PropertyDescriptors for class [com.srm.services.standalone.controller.TradersForm]
+07-19 19:56:26.121 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'JMenuBar' of type [javax.swing.JMenuBar]
+07-19 19:56:26.121 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'accessibleContext' of type [javax.accessibility.AccessibleContext]
+07-19 19:56:26.121 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'active' of type [boolean]
+07-19 19:56:26.122 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentX' of type [float]
+07-19 19:56:26.122 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentY' of type [float]
+07-19 19:56:26.122 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTop' of type [boolean]
+07-19 19:56:26.123 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTopSupported' of type [boolean]
+07-19 19:56:26.123 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'autoRequestFocus' of type [boolean]
+07-19 19:56:26.123 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'background' of type [java.awt.Color]
+07-19 19:56:26.124 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bounds' of type [java.awt.Rectangle]
+07-19 19:56:26.124 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bufferStrategy' of type [java.awt.image.BufferStrategy]
+07-19 19:56:26.125 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'component'
+07-19 19:56:26.125 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'componentCount' of type [int]
+07-19 19:56:26.125 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'components' of type [[Ljava.awt.Component;]
+07-19 19:56:26.125 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'containerListeners' of type [[Ljava.awt.event.ContainerListener;]
+07-19 19:56:26.129 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'contentPane' of type [java.awt.Container]
+07-19 19:56:26.130 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'cursor' of type [java.awt.Cursor]
+07-19 19:56:26.131 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultCloseOperation' of type [int]
+07-19 19:56:26.131 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultLookAndFeelDecorated' of type [boolean]
+07-19 19:56:26.131 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'enabled' of type [boolean]
+07-19 19:56:26.132 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRoot' of type [boolean]
+07-19 19:56:26.132 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRootAncestor' of type [java.awt.Container]
+07-19 19:56:26.134 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusOwner' of type [java.awt.Component]
+07-19 19:56:26.134 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalKeys'
+07-19 19:56:26.134 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicy' of type [java.awt.FocusTraversalPolicy]
+07-19 19:56:26.135 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicyProvider' of type [boolean]
+07-19 19:56:26.141 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicySet' of type [boolean]
+07-19 19:56:26.143 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusable' of type [boolean]
+07-19 19:56:26.144 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindow' of type [boolean]
+07-19 19:56:26.154 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindowState' of type [boolean]
+07-19 19:56:26.155 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focused' of type [boolean]
+07-19 19:56:26.156 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'font' of type [java.awt.Font]
+07-19 19:56:26.156 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'foreground' of type [java.awt.Color]
+07-19 19:56:26.157 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'glassPane' of type [java.awt.Component]
+07-19 19:56:26.158 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'graphics' of type [java.awt.Graphics]
+07-19 19:56:26.159 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImage' of type [java.awt.Image]
+07-19 19:56:26.160 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImages' of type [java.util.List]
+07-19 19:56:26.161 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'inputContext' of type [java.awt.im.InputContext]
+07-19 19:56:26.162 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'insets' of type [java.awt.Insets]
+07-19 19:56:26.163 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layeredPane' of type [javax.swing.JLayeredPane]
+07-19 19:56:26.163 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layout' of type [java.awt.LayoutManager]
+07-19 19:56:26.164 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locale' of type [java.util.Locale]
+07-19 19:56:26.165 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'location' of type [java.awt.Point]
+07-19 19:56:26.165 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationByPlatform' of type [boolean]
+07-19 19:56:26.166 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationRelativeTo' of type [java.awt.Component]
+07-19 19:56:26.167 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'maximumSize' of type [java.awt.Dimension]
+07-19 19:56:26.167 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'minimumSize' of type [java.awt.Dimension]
+07-19 19:56:26.175 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modal' of type [boolean]
+07-19 19:56:26.176 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modalExclusionType' of type [java.awt.Dialog$ModalExclusionType]
+07-19 19:56:26.177 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modalityType' of type [java.awt.Dialog$ModalityType]
+07-19 19:56:26.179 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'mostRecentFocusOwner' of type [java.awt.Component]
+07-19 19:56:26.205 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'name' of type [java.lang.String]
+07-19 19:56:26.206 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opacity' of type [float]
+07-19 19:56:26.208 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opaque' of type [boolean]
+07-19 19:56:26.209 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'ownedWindows' of type [[Ljava.awt.Window;]
+07-19 19:56:26.211 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'owner' of type [java.awt.Window]
+07-19 19:56:26.212 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'preferredSize' of type [java.awt.Dimension]
+07-19 19:56:26.214 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'resizable' of type [boolean]
+07-19 19:56:26.215 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'rootPane' of type [javax.swing.JRootPane]
+07-19 19:56:26.216 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'shape' of type [java.awt.Shape]
+07-19 19:56:26.217 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'showing' of type [boolean]
+07-19 19:56:26.217 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'size' of type [java.awt.Dimension]
+07-19 19:56:26.218 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'title' of type [java.lang.String]
+07-19 19:56:26.218 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'toolkit' of type [java.awt.Toolkit]
+07-19 19:56:26.219 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'transferHandler' of type [javax.swing.TransferHandler]
+07-19 19:56:26.220 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'type' of type [java.awt.Window$Type]
+07-19 19:56:26.220 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'undecorated' of type [boolean]
+07-19 19:56:26.221 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'validateRoot' of type [boolean]
+07-19 19:56:26.221 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'visible' of type [boolean]
+07-19 19:56:26.222 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'warningString' of type [java.lang.String]
+07-19 19:56:26.222 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowFocusListeners' of type [[Ljava.awt.event.WindowFocusListener;]
+07-19 19:56:26.223 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowListeners' of type [[Ljava.awt.event.WindowListener;]
+07-19 19:56:26.224 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowStateListeners' of type [[Ljava.awt.event.WindowStateListener;]
+07-19 19:56:26.243 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'getTradersForm'
+07-19 19:56:26.247 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.AutowiredAnnotationBeanPostProcessor.registerDependentBeans 516: Autowiring by type from bean name 'landingForm' to bean named 'getTradersForm'
+07-19 19:56:26.248 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.InjectionMetadata.inject 86: Processing injected element of bean 'landingForm': AutowiredFieldElement for com.srm.services.standalone.controller.PurchasesForm com.srm.services.standalone.controller.LandingForm.purchasesForm
+07-19 19:56:26.250 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'getPurchasesForm'
+07-19 19:56:26.252 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'getPurchasesForm'
+07-19 19:56:26.253 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'appConfig'
+07-19 19:56:26.333 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'getPurchasesForm' to allow for resolving potential circular references
+07-19 19:56:26.334 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 265: Getting BeanInfo for class [com.srm.services.standalone.controller.PurchasesForm]
+07-19 19:56:26.379 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 284: Caching PropertyDescriptors for class [com.srm.services.standalone.controller.PurchasesForm]
+07-19 19:56:26.380 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'JMenuBar' of type [javax.swing.JMenuBar]
+07-19 19:56:26.381 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'accessibleContext' of type [javax.accessibility.AccessibleContext]
+07-19 19:56:26.381 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'active' of type [boolean]
+07-19 19:56:26.382 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentX' of type [float]
+07-19 19:56:26.382 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentY' of type [float]
+07-19 19:56:26.384 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTop' of type [boolean]
+07-19 19:56:26.384 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTopSupported' of type [boolean]
+07-19 19:56:26.385 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'autoRequestFocus' of type [boolean]
+07-19 19:56:26.385 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'background' of type [java.awt.Color]
+07-19 19:56:26.387 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bounds' of type [java.awt.Rectangle]
+07-19 19:56:26.388 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bufferStrategy' of type [java.awt.image.BufferStrategy]
+07-19 19:56:26.390 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'component'
+07-19 19:56:26.391 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'componentCount' of type [int]
+07-19 19:56:26.392 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'components' of type [[Ljava.awt.Component;]
+07-19 19:56:26.393 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'containerListeners' of type [[Ljava.awt.event.ContainerListener;]
+07-19 19:56:26.393 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'contentPane' of type [java.awt.Container]
+07-19 19:56:26.394 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'cursor' of type [java.awt.Cursor]
+07-19 19:56:26.394 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultCloseOperation' of type [int]
+07-19 19:56:26.395 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultLookAndFeelDecorated' of type [boolean]
+07-19 19:56:26.395 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'enabled' of type [boolean]
+07-19 19:56:26.396 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRoot' of type [boolean]
+07-19 19:56:26.396 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRootAncestor' of type [java.awt.Container]
+07-19 19:56:26.397 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusOwner' of type [java.awt.Component]
+07-19 19:56:26.397 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalKeys'
+07-19 19:56:26.398 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicy' of type [java.awt.FocusTraversalPolicy]
+07-19 19:56:26.398 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicyProvider' of type [boolean]
+07-19 19:56:26.399 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicySet' of type [boolean]
+07-19 19:56:26.400 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusable' of type [boolean]
+07-19 19:56:26.400 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindow' of type [boolean]
+07-19 19:56:26.401 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindowState' of type [boolean]
+07-19 19:56:26.401 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focused' of type [boolean]
+07-19 19:56:26.401 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'font' of type [java.awt.Font]
+07-19 19:56:26.401 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'foreground' of type [java.awt.Color]
+07-19 19:56:26.402 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'glassPane' of type [java.awt.Component]
+07-19 19:56:26.402 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'graphics' of type [java.awt.Graphics]
+07-19 19:56:26.402 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImage' of type [java.awt.Image]
+07-19 19:56:26.403 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImages' of type [java.util.List]
+07-19 19:56:26.404 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'inputContext' of type [java.awt.im.InputContext]
+07-19 19:56:26.404 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'insets' of type [java.awt.Insets]
+07-19 19:56:26.404 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layeredPane' of type [javax.swing.JLayeredPane]
+07-19 19:56:26.405 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layout' of type [java.awt.LayoutManager]
+07-19 19:56:26.405 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locale' of type [java.util.Locale]
+07-19 19:56:26.406 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'location' of type [java.awt.Point]
+07-19 19:56:26.406 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationByPlatform' of type [boolean]
+07-19 19:56:26.406 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationRelativeTo' of type [java.awt.Component]
+07-19 19:56:26.408 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'maximumSize' of type [java.awt.Dimension]
+07-19 19:56:26.408 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'minimumSize' of type [java.awt.Dimension]
+07-19 19:56:26.409 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modal' of type [boolean]
+07-19 19:56:26.409 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modalExclusionType' of type [java.awt.Dialog$ModalExclusionType]
+07-19 19:56:26.410 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modalityType' of type [java.awt.Dialog$ModalityType]
+07-19 19:56:26.410 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'mostRecentFocusOwner' of type [java.awt.Component]
+07-19 19:56:26.411 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'name' of type [java.lang.String]
+07-19 19:56:26.411 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opacity' of type [float]
+07-19 19:56:26.412 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opaque' of type [boolean]
+07-19 19:56:26.412 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'ownedWindows' of type [[Ljava.awt.Window;]
+07-19 19:56:26.412 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'owner' of type [java.awt.Window]
+07-19 19:56:26.413 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'preferredSize' of type [java.awt.Dimension]
+07-19 19:56:26.413 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'resizable' of type [boolean]
+07-19 19:56:26.414 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'rootPane' of type [javax.swing.JRootPane]
+07-19 19:56:26.414 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'shape' of type [java.awt.Shape]
+07-19 19:56:26.414 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'showing' of type [boolean]
+07-19 19:56:26.415 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'size' of type [java.awt.Dimension]
+07-19 19:56:26.415 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'title' of type [java.lang.String]
+07-19 19:56:26.415 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'toolkit' of type [java.awt.Toolkit]
+07-19 19:56:26.416 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'transferHandler' of type [javax.swing.TransferHandler]
+07-19 19:56:26.416 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'type' of type [java.awt.Window$Type]
+07-19 19:56:26.416 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'undecorated' of type [boolean]
+07-19 19:56:26.416 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'validateRoot' of type [boolean]
+07-19 19:56:26.416 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'visible' of type [boolean]
+07-19 19:56:26.417 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'warningString' of type [java.lang.String]
+07-19 19:56:26.417 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowFocusListeners' of type [[Ljava.awt.event.WindowFocusListener;]
+07-19 19:56:26.417 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowListeners' of type [[Ljava.awt.event.WindowListener;]
+07-19 19:56:26.418 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowStateListeners' of type [[Ljava.awt.event.WindowStateListener;]
+07-19 19:56:26.421 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'getPurchasesForm'
+07-19 19:56:26.421 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.AutowiredAnnotationBeanPostProcessor.registerDependentBeans 516: Autowiring by type from bean name 'landingForm' to bean named 'getPurchasesForm'
+07-19 19:56:26.422 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'landingForm'
+07-19 19:56:26.422 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.getSingleton 221: Creating shared instance of singleton bean 'loginForm'
+07-19 19:56:26.422 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 448: Creating instance of bean 'loginForm'
+07-19 19:56:26.463 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.InjectionMetadata.checkConfigMembers 72: Registered injected element on class [com.srm.services.standalone.launch.LoginForm]: AutowiredFieldElement for private com.srm.services.standalone.controller.LandingForm com.srm.services.standalone.launch.LoginForm.landingForm
+07-19 19:56:26.463 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doCreateBean 529: Eagerly caching bean 'loginForm' to allow for resolving potential circular references
+07-19 19:56:26.463 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 265: Getting BeanInfo for class [com.srm.services.standalone.launch.LoginForm]
+07-19 19:56:26.466 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 284: Caching PropertyDescriptors for class [com.srm.services.standalone.launch.LoginForm]
+07-19 19:56:26.466 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'JMenuBar' of type [javax.swing.JMenuBar]
+07-19 19:56:26.467 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'accessibleContext' of type [javax.accessibility.AccessibleContext]
+07-19 19:56:26.467 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'active' of type [boolean]
+07-19 19:56:26.467 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentX' of type [float]
+07-19 19:56:26.467 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alignmentY' of type [float]
+07-19 19:56:26.468 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTop' of type [boolean]
+07-19 19:56:26.468 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'alwaysOnTopSupported' of type [boolean]
+07-19 19:56:26.468 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'autoRequestFocus' of type [boolean]
+07-19 19:56:26.469 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'background' of type [java.awt.Color]
+07-19 19:56:26.469 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bounds' of type [java.awt.Rectangle]
+07-19 19:56:26.469 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'bufferStrategy' of type [java.awt.image.BufferStrategy]
+07-19 19:56:26.469 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'component'
+07-19 19:56:26.469 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'componentCount' of type [int]
+07-19 19:56:26.470 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'components' of type [[Ljava.awt.Component;]
+07-19 19:56:26.470 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'containerListeners' of type [[Ljava.awt.event.ContainerListener;]
+07-19 19:56:26.470 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'contentPane' of type [java.awt.Container]
+07-19 19:56:26.470 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'cursor' of type [int]
+07-19 19:56:26.471 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'cursorType' of type [int]
+07-19 19:56:26.471 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultCloseOperation' of type [int]
+07-19 19:56:26.471 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'defaultLookAndFeelDecorated' of type [boolean]
+07-19 19:56:26.471 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'enabled' of type [boolean]
+07-19 19:56:26.472 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'extendedState' of type [int]
+07-19 19:56:26.472 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRoot' of type [boolean]
+07-19 19:56:26.472 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusCycleRootAncestor' of type [java.awt.Container]
+07-19 19:56:26.472 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusOwner' of type [java.awt.Component]
+07-19 19:56:26.473 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalKeys'
+07-19 19:56:26.473 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicy' of type [java.awt.FocusTraversalPolicy]
+07-19 19:56:26.473 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicyProvider' of type [boolean]
+07-19 19:56:26.473 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusTraversalPolicySet' of type [boolean]
+07-19 19:56:26.474 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusable' of type [boolean]
+07-19 19:56:26.474 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindow' of type [boolean]
+07-19 19:56:26.474 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focusableWindowState' of type [boolean]
+07-19 19:56:26.474 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'focused' of type [boolean]
+07-19 19:56:26.475 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'font' of type [java.awt.Font]
+07-19 19:56:26.475 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'foreground' of type [java.awt.Color]
+07-19 19:56:26.475 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'glassPane' of type [java.awt.Component]
+07-19 19:56:26.476 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'graphics' of type [java.awt.Graphics]
+07-19 19:56:26.476 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImage' of type [java.awt.Image]
+07-19 19:56:26.477 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'iconImages' of type [java.util.List]
+07-19 19:56:26.477 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'inputContext' of type [java.awt.im.InputContext]
+07-19 19:56:26.478 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'insets' of type [java.awt.Insets]
+07-19 19:56:26.478 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layeredPane' of type [javax.swing.JLayeredPane]
+07-19 19:56:26.479 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'layout' of type [java.awt.LayoutManager]
+07-19 19:56:26.479 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locale' of type [java.util.Locale]
+07-19 19:56:26.479 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'location' of type [java.awt.Point]
+07-19 19:56:26.480 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationByPlatform' of type [boolean]
+07-19 19:56:26.480 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'locationRelativeTo' of type [java.awt.Component]
+07-19 19:56:26.480 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'maximizedBounds' of type [java.awt.Rectangle]
+07-19 19:56:26.481 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'maximumSize' of type [java.awt.Dimension]
+07-19 19:56:26.481 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'menuBar' of type [java.awt.MenuBar]
+07-19 19:56:26.481 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'minimumSize' of type [java.awt.Dimension]
+07-19 19:56:26.482 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'modalExclusionType' of type [java.awt.Dialog$ModalExclusionType]
+07-19 19:56:26.482 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'mostRecentFocusOwner' of type [java.awt.Component]
+07-19 19:56:26.482 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'name' of type [java.lang.String]
+07-19 19:56:26.483 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opacity' of type [float]
+07-19 19:56:26.483 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'opaque' of type [boolean]
+07-19 19:56:26.483 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'ownedWindows' of type [[Ljava.awt.Window;]
+07-19 19:56:26.484 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'owner' of type [java.awt.Window]
+07-19 19:56:26.484 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'preferredSize' of type [java.awt.Dimension]
+07-19 19:56:26.485 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'resizable' of type [boolean]
+07-19 19:56:26.485 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'rootPane' of type [javax.swing.JRootPane]
+07-19 19:56:26.486 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'shape' of type [java.awt.Shape]
+07-19 19:56:26.486 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'showing' of type [boolean]
+07-19 19:56:26.486 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'size' of type [java.awt.Dimension]
+07-19 19:56:26.487 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'state' of type [int]
+07-19 19:56:26.487 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'title' of type [java.lang.String]
+07-19 19:56:26.488 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'toolkit' of type [java.awt.Toolkit]
+07-19 19:56:26.488 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'transferHandler' of type [javax.swing.TransferHandler]
+07-19 19:56:26.488 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'type' of type [java.awt.Window$Type]
+07-19 19:56:26.488 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'undecorated' of type [boolean]
+07-19 19:56:26.489 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'validateRoot' of type [boolean]
+07-19 19:56:26.489 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'visible' of type [boolean]
+07-19 19:56:26.489 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'warningString' of type [java.lang.String]
+07-19 19:56:26.490 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowFocusListeners' of type [[Ljava.awt.event.WindowFocusListener;]
+07-19 19:56:26.490 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowListeners' of type [[Ljava.awt.event.WindowListener;]
+07-19 19:56:26.490 [AWT-EventQueue-0] [TRACE] - o.s.b.CachedIntrospectionResults.<init> 297: Found bean property 'windowStateListeners' of type [[Ljava.awt.event.WindowStateListener;]
+07-19 19:56:26.493 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.InjectionMetadata.inject 86: Processing injected element of bean 'loginForm': AutowiredFieldElement for private com.srm.services.standalone.controller.LandingForm com.srm.services.standalone.launch.LoginForm.landingForm
+07-19 19:56:26.494 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'landingForm'
+07-19 19:56:26.495 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.a.AutowiredAnnotationBeanPostProcessor.registerDependentBeans 516: Autowiring by type from bean name 'loginForm' to bean named 'landingForm'
+07-19 19:56:26.495 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.createBean 484: Finished creating instance of bean 'loginForm'
+07-19 19:56:26.495 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'getTradersForm'
+07-19 19:56:26.496 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'getPurchasesForm'
+07-19 19:56:26.496 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'getCategoryForm'
+07-19 19:56:26.497 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+07-19 19:56:26.523 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.context.annotation.ConfigurationClassPostProcessor
+07-19 19:56:26.525 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
+07-19 19:56:26.526 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor
+07-19 19:56:26.535 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.context.annotation.CommonAnnotationBeanPostProcessor
+07-19 19:56:26.536 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.context.event.EventListenerMethodProcessor
+07-19 19:56:26.541 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.context.event.DefaultEventListenerFactory
+07-19 19:56:26.542 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class com.srm.services.standalone.config.AppConfig$$EnhancerBySpringCGLIB$$d0d8a7fa
+07-19 19:56:26.543 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.context.annotation.ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor
+07-19 19:56:26.544 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.context.annotation.ConfigurationClassPostProcessor$EnhancedConfigurationBeanPostProcessor
+07-19 19:56:26.571 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class com.srm.services.standalone.controller.LandingForm
+07-19 19:56:26.626 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class com.srm.services.standalone.launch.LoginForm
+07-19 19:56:26.647 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class com.srm.services.standalone.controller.TradersForm
+07-19 19:56:26.659 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class com.srm.services.standalone.controller.PurchasesForm
+07-19 19:56:26.673 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class com.srm.services.standalone.controller.CategoryForm
+07-19 19:56:26.674 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.core.env.StandardEnvironment
+07-19 19:56:26.678 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class java.util.Properties
+07-19 19:56:26.679 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class java.util.Collections$UnmodifiableMap
+07-19 19:56:26.681 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.context.annotation.ConfigurationClassParser$ImportStack
+07-19 19:56:26.683 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.context.support.DelegatingMessageSource
+07-19 19:56:26.685 [AWT-EventQueue-0] [TRACE] - o.s.c.e.EventListenerMethodProcessor.processBean 148: No @EventListener annotations found on bean class: class org.springframework.context.event.SimpleApplicationEventMulticaster
+07-19 19:56:26.690 [AWT-EventQueue-0] [DEBUG] - o.s.c.a.AnnotationConfigApplicationContext.initLifecycleProcessor 779: Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@6076694]
+07-19 19:56:26.695 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'lifecycleProcessor'
+07-19 19:56:26.696 [AWT-EventQueue-0] [TRACE] - o.s.c.a.AnnotationConfigApplicationContext.publishEvent 362: Publishing event in org.springframework.context.annotation.AnnotationConfigApplicationContext@25f5ff9e: org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.annotation.AnnotationConfigApplicationContext@25f5ff9e: startup date [Thu Jul 19 19:56:24 IST 2018]; root of context hierarchy]
+07-19 19:56:26.701 [AWT-EventQueue-0] [TRACE] - o.s.c.e.PropertySourcesPropertyResolver.getProperty 78: Searching for key 'spring.liveBeansView.mbeanDomain' in [systemProperties]
+07-19 19:56:26.701 [AWT-EventQueue-0] [TRACE] - o.s.c.e.PropertySourcesPropertyResolver.getProperty 78: Searching for key 'spring.liveBeansView.mbeanDomain' in [systemEnvironment]
+07-19 19:56:26.704 [AWT-EventQueue-0] [DEBUG] - o.s.c.e.PropertySourcesPropertyResolver.getProperty 91: Could not find key 'spring.liveBeansView.mbeanDomain' in any property source
+07-19 19:56:26.708 [AWT-EventQueue-0] [DEBUG] - o.s.b.f.s.DefaultListableBeanFactory.doGetBean 251: Returning cached instance of singleton bean 'loginForm'
+07-19 19:56:26.712 [AWT-EventQueue-0] [INFO] - c.s.s.s.u.StandaloneUtils.setScreenCenter 24: ******Started SetScreenCenter**********
+07-19 19:57:18.117 [AWT-EventQueue-0] [INFO] - c.s.s.s.u.StandaloneUtils.setScreenCenter 24: ******Started SetScreenCenter**********
