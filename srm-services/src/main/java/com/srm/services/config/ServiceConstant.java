@@ -18,10 +18,12 @@ public class ServiceConstant {
     public static final Integer ACTION_UPDATE=2;
     public static final Integer ACTION_DELETE=3;
     public static final Integer ACTION_LOGIN_FAILURE=4;
+    public static final Integer ACTION_FAILURE=5;
     public static final String SELECTED="Select";
     public static final String PARM_PROD_CODE="prodCode";
     public static final String DEFAULT_USE_YES="Y";
     public static final String DEFAULT_USE_NO="N";
+    public static final String DEFAULT_VALUE="--Select--";
     public static final String CATEGORY_PROD_CODE_SQL="SELECT CP.PRODUCT_CODE,CP.PRODUCT_NAME,PS.PROD_QUANTITY,PS.PROD_PRICE"
             + " FROM CATEGORY_PRODUCT CP JOIN "
             + "PRODUCT_STOCK PS ON CP.PRODUCT_CODE=PS.PROD_CODE WHERE PS.PROD_CODE=:prodCode";
@@ -32,5 +34,8 @@ public class ServiceConstant {
     public static Double calcDiscount(Double amount,Integer discount){
         return (amount-((amount*discount)/100));
     }
-
+    public static final String MANDATORY_EMAIL="Email Required";
+    public static final String CONFIRM_PWD="Password does not matched";
+    public static final String TECHNICAL_ERROR_MSG="Techinical Error,Please try later";
+    public static final String TRADER_SEQ_KEY="PURCHASES_SEQ";
 }

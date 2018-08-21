@@ -25,6 +25,12 @@ public class User {
     
     private String displayName;
     
+    private String mobileNo;
+    
+    private String password;
+    
+    private Address address;
+    
     public String getEmailId() {
         return emailId;
     }
@@ -63,6 +69,30 @@ public class User {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
     
     

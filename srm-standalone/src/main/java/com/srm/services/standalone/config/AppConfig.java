@@ -7,18 +7,18 @@ package com.srm.services.standalone.config;
 
 import com.srm.services.standalone.controller.CategoryForm;
 import com.srm.services.standalone.controller.CountryForm;
-import com.srm.services.standalone.controller.LandingForm;
 import com.srm.services.standalone.controller.PurchasesForm;
+import com.srm.services.standalone.controller.StockEntryForm;
 import com.srm.services.standalone.controller.TradersForm;
+import com.srm.services.standalone.controller.UnitTypeForm;
 import com.srm.services.standalone.controller.UserSignForm;
-import com.sun.corba.se.impl.logging.NamingSystemException;
+import com.srm.services.standalone.launch.LoginForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowire;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 
 /**
  *
@@ -28,6 +28,12 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages ={"com.srm.services.*"})
 public class AppConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(AppConfig.class);
+    
+    @Bean
+    public LoginForm getLoginForm(){
+        LoginForm loginForm=new LoginForm();
+        return loginForm;
+    }
     
     @Bean
     public CategoryForm getCategoryForm(){
@@ -50,10 +56,18 @@ public class AppConfig {
         UserSignForm userSignForm=new UserSignForm(null,true);
         return userSignForm;
     }
-    
     @Bean
     public CountryForm getCountryForm(){
         CountryForm countryForm=new CountryForm(null, true);
         return countryForm;
     }
+    @Bean
+    public StockEntryForm getStockEntryForm(){
+        return new StockEntryForm(null, true);
+    }
+    @Bean
+    public UnitTypeForm getUnitTypeForm(){
+        return new UnitTypeForm(null, true);
+    }
+    
 }

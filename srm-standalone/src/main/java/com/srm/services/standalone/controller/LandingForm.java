@@ -46,21 +46,19 @@ public class LandingForm extends javax.swing.JFrame {
         jXImagePanel1 = new com.srm.components.JXImagePanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
-        jProgressBar2 = new javax.swing.JProgressBar();
         jXImagePanel4 = new com.srm.components.JXImagePanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jProgressBar3 = new javax.swing.JProgressBar();
-        jProgressBar4 = new javax.swing.JProgressBar();
         jXImagePanel5 = new com.srm.components.JXImagePanel();
         jXImagePanel3 = new com.srm.components.JXImagePanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        stockActionBtn = new javax.swing.JButton();
         jXImagePanel6 = new com.srm.components.JXImagePanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        unitTypeActionBtn = new javax.swing.JButton();
         jXStatusBar1 = new com.srm.components.JXStatusBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,7 +102,7 @@ public class LandingForm extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        jTabbedPane1.setBackground(new java.awt.Color(16, 8, 14));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setAutoscrolls(true);
         jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -112,7 +110,7 @@ public class LandingForm extends javax.swing.JFrame {
 
         jXImagePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/app-background.png"))); // NOI18N
 
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         jLabel2.setBackground(new java.awt.Color(155, 25, 93));
         jLabel2.setFont(new java.awt.Font("Elephant", 0, 18)); // NOI18N
@@ -121,18 +119,6 @@ public class LandingForm extends javax.swing.JFrame {
         jLabel2.setText("Stock Details");
         jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel2.setOpaque(true);
-
-        jProgressBar1.setBackground(new java.awt.Color(0, 102, 102));
-        jProgressBar1.setToolTipText("");
-        jProgressBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total stock", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 16))); // NOI18N
-        jProgressBar1.setString("0");
-        jProgressBar1.setStringPainted(true);
-
-        jProgressBar2.setBackground(new java.awt.Color(0, 102, 102));
-        jProgressBar2.setToolTipText("");
-        jProgressBar2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total Sales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 16))); // NOI18N
-        jProgressBar2.setString("0");
-        jProgressBar2.setStringPainted(true);
 
         jXImagePanel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/warehouse.png"))); // NOI18N
 
@@ -155,11 +141,7 @@ public class LandingForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jXImagePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(296, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,13 +149,8 @@ public class LandingForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jProgressBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jXImagePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addComponent(jXImagePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -185,18 +162,6 @@ public class LandingForm extends javax.swing.JFrame {
         jLabel3.setText("Transaction Details");
         jLabel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel3.setOpaque(true);
-
-        jProgressBar3.setBackground(new java.awt.Color(0, 102, 102));
-        jProgressBar3.setToolTipText("");
-        jProgressBar3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total Credit ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 16))); // NOI18N
-        jProgressBar3.setString("0");
-        jProgressBar3.setStringPainted(true);
-
-        jProgressBar4.setBackground(new java.awt.Color(0, 102, 102));
-        jProgressBar4.setToolTipText("");
-        jProgressBar4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Total Debit", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 16))); // NOI18N
-        jProgressBar4.setString("0");
-        jProgressBar4.setStringPainted(true);
 
         jXImagePanel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/money.png"))); // NOI18N
 
@@ -215,14 +180,10 @@ public class LandingForm extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jXImagePanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                    .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -231,13 +192,8 @@ public class LandingForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jProgressBar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jXImagePanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jXImagePanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jXImagePanel1Layout = new javax.swing.GroupLayout(jXImagePanel1);
@@ -245,20 +201,20 @@ public class LandingForm extends javax.swing.JFrame {
         jXImagePanel1Layout.setHorizontalGroup(
             jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel1Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
+                .addGap(37, 37, 37)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(26, 26, 26)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addContainerGap(448, Short.MAX_VALUE))
         );
         jXImagePanel1Layout.setVerticalGroup(
             jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXImagePanel1Layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("DASHBOARD", jXImagePanel1);
@@ -301,6 +257,18 @@ public class LandingForm extends javax.swing.JFrame {
             }
         });
 
+        stockActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        stockActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stockicon_32.png"))); // NOI18N
+        stockActionBtn.setText("stock");
+        stockActionBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        stockActionBtn.setVerifyInputWhenFocusTarget(false);
+        stockActionBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        stockActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockActionBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jXImagePanel3Layout = new javax.swing.GroupLayout(jXImagePanel3);
         jXImagePanel3.setLayout(jXImagePanel3Layout);
         jXImagePanel3Layout.setHorizontalGroup(
@@ -308,17 +276,20 @@ public class LandingForm extends javax.swing.JFrame {
             .addGroup(jXImagePanel3Layout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(642, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(stockActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(485, Short.MAX_VALUE))
         );
         jXImagePanel3Layout.setVerticalGroup(
             jXImagePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXImagePanel3Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(jXImagePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(stockActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -353,25 +324,40 @@ public class LandingForm extends javax.swing.JFrame {
             }
         });
 
+        unitTypeActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        unitTypeActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-filter-30.png"))); // NOI18N
+        unitTypeActionBtn.setText("units");
+        unitTypeActionBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        unitTypeActionBtn.setVerifyInputWhenFocusTarget(false);
+        unitTypeActionBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        unitTypeActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitTypeActionBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jXImagePanel6Layout = new javax.swing.GroupLayout(jXImagePanel6);
         jXImagePanel6.setLayout(jXImagePanel6Layout);
         jXImagePanel6Layout.setHorizontalGroup(
             jXImagePanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXImagePanel6Layout.createSequentialGroup()
-                .addGap(129, 129, 129)
+                .addGap(68, 68, 68)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(818, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(unitTypeActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(733, Short.MAX_VALUE))
         );
         jXImagePanel6Layout.setVerticalGroup(
             jXImagePanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXImagePanel6Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(62, 62, 62)
                 .addGroup(jXImagePanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(unitTypeActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(427, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("settings", jXImagePanel6);
@@ -418,6 +404,7 @@ public class LandingForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        purchasesForm.loadData();
         StandaloneUtils.setScreenCenter(purchasesForm, this);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -430,11 +417,22 @@ public class LandingForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         StandaloneUtils.setScreenCenter(countryForm, this);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void stockActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockActionBtnActionPerformed
+        stockEntryForm.load();
+        StandaloneUtils.setScreenCenter(stockEntryForm,this);
+    }//GEN-LAST:event_stockActionBtnActionPerformed
+
+    private void unitTypeActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitTypeActionBtnActionPerformed
+        unitTypeForm.loadInitalData();
+        StandaloneUtils.setScreenCenter(unitTypeForm, this);
+    }//GEN-LAST:event_unitTypeActionBtnActionPerformed
     public void startSpinner(){
         progressBar.start();
     }
     public void stopSpinner(){
         progressBar.stop();
+        jXStatusBar1.getjProgressBar1().setValue(0);
     }
     private ActionListener listener=new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -449,6 +447,8 @@ public class LandingForm extends javax.swing.JFrame {
     @Autowired private TradersForm tradersForm;
     @Autowired private PurchasesForm purchasesForm;
     @Autowired private UserSignForm userSignForm;
+    @Autowired private StockEntryForm stockEntryForm;
+    @Autowired private UnitTypeForm unitTypeForm;
     private javax.swing.Timer progressBar;
     private static Integer index=10;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -464,10 +464,6 @@ public class LandingForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JProgressBar jProgressBar3;
-    private javax.swing.JProgressBar jProgressBar4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private com.srm.components.JXImagePanel jXImagePanel1;
     private com.srm.components.JXImagePanel jXImagePanel2;
@@ -476,5 +472,7 @@ public class LandingForm extends javax.swing.JFrame {
     private com.srm.components.JXImagePanel jXImagePanel5;
     private com.srm.components.JXImagePanel jXImagePanel6;
     private com.srm.components.JXStatusBar jXStatusBar1;
+    private javax.swing.JButton stockActionBtn;
+    private javax.swing.JButton unitTypeActionBtn;
     // End of variables declaration//GEN-END:variables
 }

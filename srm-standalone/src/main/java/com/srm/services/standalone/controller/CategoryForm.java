@@ -5,20 +5,40 @@
  */
 package com.srm.services.standalone.controller;
 
-import org.springframework.stereotype.Component;
+import com.srm.services.config.ServiceConstant;
+import com.srm.services.modal.Product;
+import com.srm.services.modal.ProductType;
+import com.srm.services.services.ProductService;
+import com.srm.services.standalone.model.ProductTableModel;
+import com.srm.services.standalone.model.ProductTypeTableModel;
+import com.srm.services.standalone.utils.StandaloneUtils;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.RowFilter;
+import javax.swing.RowSorter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author umprasad
  */
 public class CategoryForm extends javax.swing.JDialog {
-
+    private final static Logger LOGGER=LoggerFactory.getLogger(CategoryForm.class);
     /**
      * Creates new form CategoryForm
      */
     public CategoryForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setModel();
     }
 
     /**
@@ -33,26 +53,26 @@ public class CategoryForm extends javax.swing.JDialog {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jXImagePanel1 = new com.srm.components.JXImagePanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        productTypeTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        filterSearchTxt = new javax.swing.JTextField();
+        addActionBtn = new javax.swing.JButton();
+        saveActionBtn = new javax.swing.JButton();
+        removeActionBtn = new javax.swing.JButton();
+        refreshActionBtn = new javax.swing.JButton();
         jXImagePanel2 = new com.srm.components.JXImagePanel();
-        jTextField2 = new javax.swing.JTextField();
-        subProdSearch = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        productCodeTxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        productNameTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        productType = new javax.swing.JComboBox<>();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        productTypeActionBox = new javax.swing.JComboBox<>();
+        saveProdActionBtn = new javax.swing.JButton();
+        removePrdActionBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        productTable = new javax.swing.JTable();
+        prodUpdateActionBtn = new javax.swing.JButton();
+        newProdActionBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 102));
@@ -60,41 +80,61 @@ public class CategoryForm extends javax.swing.JDialog {
         setResizable(false);
 
         jTabbedPane1.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jXImagePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/app-background.png"))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        productTypeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "PRODUCT TYPE"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
-        jTable1.setColumnSelectionAllowed(true);
-        jScrollPane1.setViewportView(jTable1);
+        ));
+        productTypeTable.setColumnSelectionAllowed(true);
+        jScrollPane1.setViewportView(productTypeTable);
 
         jLabel1.setFont(new java.awt.Font("Engravers MT", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
         jLabel1.setText("Search");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus_1.png"))); // NOI18N
-        jButton1.setText("Add");
+        addActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus_1.png"))); // NOI18N
+        addActionBtn.setText("Add");
+        addActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionBtnActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
-        jButton2.setText("Save");
+        saveActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        saveActionBtn.setText("Save");
+        saveActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionBtnActionPerformed(evt);
+            }
+        });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button_1.png"))); // NOI18N
-        jButton3.setText("Remove");
+        removeActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button_1.png"))); // NOI18N
+        removeActionBtn.setText("Remove");
+        removeActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionBtnActionPerformed(evt);
+            }
+        });
+
+        refreshActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
+        refreshActionBtn.setText("Refresh");
+        refreshActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jXImagePanel1Layout = new javax.swing.GroupLayout(jXImagePanel1);
         jXImagePanel1.setLayout(jXImagePanel1Layout);
@@ -104,11 +144,13 @@ public class CategoryForm extends javax.swing.JDialog {
                 .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jXImagePanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(removeActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(refreshActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jXImagePanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -116,7 +158,7 @@ public class CategoryForm extends javax.swing.JDialog {
                             .addGroup(jXImagePanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1)))))
+                                .addComponent(filterSearchTxt)))))
                 .addGap(33, 33, 33))
         );
         jXImagePanel1Layout.setVerticalGroup(
@@ -125,31 +167,21 @@ public class CategoryForm extends javax.swing.JDialog {
                 .addGap(49, 49, 49)
                 .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(filterSearchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(166, Short.MAX_VALUE))
+                    .addComponent(addActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
 
         jTabbedPane1.addTab("products", jXImagePanel1);
 
         jXImagePanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/app-background.png"))); // NOI18N
-
-        subProdSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Product Code", "Product Name" }));
-        subProdSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subProdSearchActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
-        jButton4.setText("Search");
 
         jLabel2.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
         jLabel2.setText("Product Code");
@@ -160,37 +192,61 @@ public class CategoryForm extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
         jLabel4.setText("Product Type");
 
-        productType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Product Code", "Product Name" }));
-        productType.addActionListener(new java.awt.event.ActionListener() {
+        productTypeActionBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select--" }));
+        productTypeActionBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                productTypeActionPerformed(evt);
+                productTypeActionBoxActionPerformed(evt);
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
-        jButton6.setText("Save");
+        saveProdActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        saveProdActionBtn.setText("Save");
+        saveProdActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveProdActionBtnActionPerformed(evt);
+            }
+        });
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button_1.png"))); // NOI18N
-        jButton7.setText("Remove");
+        removePrdActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button_1.png"))); // NOI18N
+        removePrdActionBtn.setText("Remove");
+        removePrdActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removePrdActionBtnActionPerformed(evt);
+            }
+        });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        productTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Product Code", "Product Name", "Product Type"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, true, true
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+            }
+        ));
+        productTable.setColumnSelectionAllowed(true);
+        productTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productTableMouseClicked(evt);
             }
         });
-        jTable2.setColumnSelectionAllowed(true);
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(productTable);
+
+        prodUpdateActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        prodUpdateActionBtn.setText("Update");
+        prodUpdateActionBtn.setEnabled(false);
+        prodUpdateActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prodUpdateActionBtnActionPerformed(evt);
+            }
+        });
+
+        newProdActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/file.png"))); // NOI18N
+        newProdActionBtn.setText("New");
+        newProdActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newProdActionBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jXImagePanel2Layout = new javax.swing.GroupLayout(jXImagePanel2);
         jXImagePanel2.setLayout(jXImagePanel2Layout);
@@ -200,61 +256,56 @@ public class CategoryForm extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                        .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                                    .addComponent(subProdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jButton4))
-                                .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(productType, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE))
+                                .addComponent(productCodeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jXImagePanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(productNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jXImagePanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(productTypeActionBox, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 228, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(newProdActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(saveProdActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(prodUpdateActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(removePrdActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jXImagePanel2Layout.setVerticalGroup(
             jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(subProdSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
-                .addGap(43, 43, 43)
+                .addGap(31, 31, 31)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(productCodeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(productNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(productType, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(productTypeActionBox, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(saveProdActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removePrdActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prodUpdateActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newProdActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("SUB Products", jXImagePanel2);
@@ -273,22 +324,179 @@ public class CategoryForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void subProdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subProdSearchActionPerformed
+    private void productTypeActionBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productTypeActionBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_subProdSearchActionPerformed
+    }//GEN-LAST:event_productTypeActionBoxActionPerformed
 
-    private void productTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_productTypeActionPerformed
+    private void addActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionBtnActionPerformed
+        productTypeTableModel.addRow(new ProductType());
+        
+    }//GEN-LAST:event_addActionBtnActionPerformed
 
-   
+    private void saveActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionBtnActionPerformed
+       try{ 
+            List<ProductType> tempTypes=productTypeTableModel.getNewRows();
+            LOGGER.info("Size{}"+tempTypes.isEmpty());
+            if(productService.save(tempTypes)!=null){
+                tempTypes.clear();
+                StandaloneUtils.dialogBox(ServiceConstant.ACTION_SAVE,this);
+            }
+       }catch(Exception ex){
+            StandaloneUtils.dialogBox(ServiceConstant.TECHNICAL_ERROR_MSG,this);
+       }
+    }//GEN-LAST:event_saveActionBtnActionPerformed
+
+    private void removeActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionBtnActionPerformed
+       int row=productTypeTable.getSelectedRow();
+       if(row!=-1){
+            ProductType productType=productTypeTableModel.getRow(row);
+            productService.deleteProductType(productType);
+            productTypeTableModel.removeRow(row);
+            StandaloneUtils.dialogBox(ServiceConstant.ACTION_UPDATE,this);
+       }
+    }//GEN-LAST:event_removeActionBtnActionPerformed
+
+    private void refreshActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionBtnActionPerformed
+        this.loadInitalData();
+    }//GEN-LAST:event_refreshActionBtnActionPerformed
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+       int index=jTabbedPane1.getSelectedIndex();
+       if(index==1){
+           productTypeActionBox.removeAllItems();
+           List<String> prodTypes=productService.findAllProductTypes();
+           if(prodTypes!=null){
+               DefaultComboBoxModel<String> model=new DefaultComboBoxModel<>();
+               model.addElement(ServiceConstant.DEFAULT_VALUE);
+               prodTypes.stream().forEach(prodType->model.addElement(prodType));
+               productTypeActionBox.setModel(model);
+           }
+       }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
+
+    private void saveProdActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveProdActionBtnActionPerformed
+       try{
+            Product product=new Product();
+            product.setProdCode(productCodeTxt.getText());
+            product.setProdName(productNameTxt.getText());
+            String value=productTypeActionBox.getSelectedItem().toString();
+            ProductType productType=productService.findProductTypeByName(value);
+            product.setProductType(productType);
+            productService.save(product);
+            productTableModel.addRow(product);
+            StandaloneUtils.dialogBox(ServiceConstant.ACTION_SAVE,this);
+       }catch(Exception ex){
+             StandaloneUtils.dialogBox("Please chocise Different Product Code",this);
+       }
+    }//GEN-LAST:event_saveProdActionBtnActionPerformed
+
+    private void prodUpdateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodUpdateActionBtnActionPerformed
+      try{
+            selectedProduct.setProdName(productNameTxt.getText());
+            String value=productTypeActionBox.getSelectedItem().toString();
+            ProductType productType=productService.findProductTypeByName(value);
+            selectedProduct.setProductType(productType);
+            productService.update(selectedProduct);
+            StandaloneUtils.dialogBox(ServiceConstant.ACTION_UPDATE,this);
+            this.selectedProduct=null;
+            productTableModel.fireTableDataChanged();
+       }catch(Exception ex){
+             StandaloneUtils.dialogBox(ServiceConstant.TECHNICAL_ERROR_MSG,this);
+       }
+    }//GEN-LAST:event_prodUpdateActionBtnActionPerformed
+
+    private void newProdActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newProdActionBtnActionPerformed
+         productCodeTxt.setText("");
+         productNameTxt.setText("");
+         productTypeActionBox.setSelectedIndex(0);
+         saveProdActionBtn.setEnabled(Boolean.TRUE);
+         prodUpdateActionBtn.setEnabled(Boolean.FALSE);
+         productCodeTxt.setEditable(Boolean.TRUE);
+         this.selectedProduct=null;
+    }//GEN-LAST:event_newProdActionBtnActionPerformed
+
+    private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
+        int row=productTable.getSelectedRow();
+        if(row!=-1){
+            this.selectedProduct=productTableModel.getRow(row);
+            productCodeTxt.setText(selectedProduct.getProdCode());
+            productNameTxt.setText(selectedProduct.getProdName());
+            ProductType productType=selectedProduct.getProductType();
+            productTypeActionBox.setSelectedItem(productType.getProdctTypeName());
+            saveProdActionBtn.setEnabled(Boolean.FALSE);
+            prodUpdateActionBtn.setEnabled(Boolean.TRUE);
+            productCodeTxt.setEditable(Boolean.FALSE);
+        }
+    }//GEN-LAST:event_productTableMouseClicked
+
+    private void removePrdActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePrdActionBtnActionPerformed
+        try{
+            int row=productTable.getSelectedRow();
+            productService.deleteProduct(selectedProduct);
+            productTableModel.removeRow(row);
+            StandaloneUtils.dialogBox(ServiceConstant.ACTION_DELETE,this);
+            newProdActionBtnActionPerformed(evt);
+        }catch(Exception ex){
+            StandaloneUtils.dialogBox(ServiceConstant.TECHNICAL_ERROR_MSG,this);
+        }
+    }//GEN-LAST:event_removePrdActionBtnActionPerformed
+    private void setModel(){
+        if(this.productTypes==null){this.productTypes=new ArrayList<>();}
+        productTypeTableModel=new ProductTypeTableModel(productTypes);
+        productTypeTable.setModel(productTypeTableModel);
+        if(this.products==null){this.products=new ArrayList<>();}
+        productTableModel=new ProductTableModel(products);
+        productTable.setModel(productTableModel);
+        RowSorter<? extends TableModel> productTypeSorter=productTypeTable.getRowSorter();
+        if(productTypeSorter==null){
+             productTypeTable.setAutoCreateRowSorter(true);
+             productTypeSorter=productTypeTable.getRowSorter();
+        }
+        TableRowSorter<?extends TableModel> prodTypeSorter=
+                (productTypeSorter instanceof TableRowSorter)?(TableRowSorter<? extends TableModel>)productTypeSorter:null;
+       
+        filterSearchTxt.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                update(e);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                update(e);
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                update(e);
+            }
+            private void update(DocumentEvent e){
+                String text=filterSearchTxt.getText();
+                if(text.trim().length()==0){
+                    prodTypeSorter.setRowFilter(null);
+                }else{
+                    prodTypeSorter.setRowFilter(RowFilter.regexFilter("(?i)"+text));
+                }
+            }
+        });
+    }
+    @PostConstruct
+    private void loadInitalData(){
+        productTypeTableModel.removeAll();
+        productTypes.addAll(productService.findAllProdcutTypes());
+        productTypeTableModel.fireTableDataChanged();
+        productTableModel.removeAll();
+        products.addAll(productService.findAllProducts());
+    }
+    private ProductTableModel productTableModel;
+    private ProductTypeTableModel productTypeTableModel;
+    private List<ProductType> productTypes;
+    private List<Product> products;
+    private Product selectedProduct;
+    @Autowired private ProductService productService;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton addActionBtn;
+    private javax.swing.JTextField filterSearchTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -296,15 +504,19 @@ public class CategoryForm extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private com.srm.components.JXImagePanel jXImagePanel1;
     private com.srm.components.JXImagePanel jXImagePanel2;
-    private javax.swing.JComboBox<String> productType;
-    private javax.swing.JComboBox<String> subProdSearch;
+    private javax.swing.JButton newProdActionBtn;
+    private javax.swing.JButton prodUpdateActionBtn;
+    private javax.swing.JTextField productCodeTxt;
+    private javax.swing.JTextField productNameTxt;
+    private javax.swing.JTable productTable;
+    private javax.swing.JComboBox<String> productTypeActionBox;
+    private javax.swing.JTable productTypeTable;
+    private javax.swing.JButton refreshActionBtn;
+    private javax.swing.JButton removeActionBtn;
+    private javax.swing.JButton removePrdActionBtn;
+    private javax.swing.JButton saveActionBtn;
+    private javax.swing.JButton saveProdActionBtn;
     // End of variables declaration//GEN-END:variables
 }

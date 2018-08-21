@@ -5,33 +5,28 @@
  */
 package com.srm.services.standalone.controller;
 
+import com.srm.services.config.ServiceConstant;
+import com.srm.services.modal.City;
 import com.srm.services.modal.Country;
 import com.srm.services.modal.State;
-import com.srm.services.stadalone.model.CountryCellRender;
-import com.srm.services.stadalone.model.CountryTableModel;
-import com.srm.services.stadalone.model.StateTableModel;
+import com.srm.services.services.UserService;
+import com.srm.services.standalone.model.CityTableModel;
+import com.srm.services.standalone.model.CountryCellRender;
+import com.srm.services.standalone.model.CountryTableModel;
+import com.srm.services.standalone.model.StateTableModel;
 import com.srm.services.standalone.utils.StandaloneUtils;
-import com.srm.services.standalone.utils.TableUtils;
-import java.awt.Component;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import javax.swing.JTable;
-import javax.swing.JTree;
+import javax.annotation.PostConstruct;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -45,6 +40,8 @@ public class CountryForm extends javax.swing.JDialog {
     public CountryForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        model = (DefaultTreeModel)countryJtree.getModel();
+        root=(DefaultMutableTreeNode)countryJtree.getModel().getRoot();
     }
 
     /**
@@ -59,29 +56,35 @@ public class CountryForm extends javax.swing.JDialog {
         jXImagePanel1 = new com.srm.components.JXImagePanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         countryTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        saveActionBtn = new javax.swing.JButton();
+        deleteActionBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         countryJtree = new javax.swing.JTree();
-        jButton4 = new javax.swing.JButton();
+        newActionBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jXImagePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/app-background.png"))); // NOI18N
 
+        countryTable.setSelectionBackground(new java.awt.Color(204, 255, 204));
+        countryTable.setSelectionForeground(new java.awt.Color(255, 102, 51));
         jScrollPane2.setViewportView(countryTable);
 
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        saveActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        saveActionBtn.setText("Save");
+        saveActionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                saveActionBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Update");
-
-        jButton3.setText("Delete");
+        deleteActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button_1.png"))); // NOI18N
+        deleteActionBtn.setText("Delete");
+        deleteActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Country");
         countryJtree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
@@ -103,10 +106,11 @@ public class CountryForm extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(countryJtree);
 
-        jButton4.setText("Add");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        newActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/file.png"))); // NOI18N
+        newActionBtn.setText("New");
+        newActionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                newActionBtnActionPerformed(evt);
             }
         });
 
@@ -119,16 +123,14 @@ public class CountryForm extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel1Layout.createSequentialGroup()
-                        .addGap(0, 252, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(newActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jXImagePanel1Layout.setVerticalGroup(
@@ -141,10 +143,9 @@ public class CountryForm extends javax.swing.JDialog {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
                         .addGap(29, 29, 29)
                         .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(newActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -162,23 +163,23 @@ public class CountryForm extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        if(isCountryNode){
-            for(Country country:countrys){
-               updateCountryNode(country);
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-    private void updateCountryNode(Country country){
-        DefaultTreeModel model = (DefaultTreeModel)countryJtree.getModel();
-        DefaultMutableTreeNode root=(DefaultMutableTreeNode)countryJtree.getModel().getRoot();
+    private void saveActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionBtnActionPerformed
+        save();
+        this.selectedPath=countryJtree.getSelectionPath();
+        //this.loadData();
+        DefaultMutableTreeNode node=(DefaultMutableTreeNode)this.selectedPath.getLastPathComponent();
+        model.reload(node);
+        countryJtree.setSelectionPath(selectedPath);
+        countryJtree.expandPath(this.selectedPath);
+        StandaloneUtils.dialogBox(ServiceConstant.ACTION_SAVE,this);
+    
+    }//GEN-LAST:event_saveActionBtnActionPerformed
+    private void updateCountryNode(DefaultTreeModel model,DefaultMutableTreeNode root,Country country){
         DefaultMutableTreeNode childNode=new DefaultMutableTreeNode(country);
         int index=childIndex(root,country.getCountryName());
         if(index==-1){
-           model.insertNodeInto(childNode, root,root.getChildCount());
-         }
-        countryJtree.repaint();
+            model.insertNodeInto(childNode, root,root.getChildCount());
+        }
     }
     private void countryJtreePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_countryJtreePropertyChange
         // TODO add your handling code here:
@@ -203,6 +204,11 @@ public class CountryForm extends javax.swing.JDialog {
         if(countryPath==null || (countryPath!=null && StandaloneUtils.COUNTRY_NODE.equals(countryPath.toString()))){
             isCountryNode=true;
             addCountryModel();
+            if(this.countrys!=null && !this.countrys.isEmpty()){
+                for(Country country:this.countrys){
+                    updateCountryNode(this.model,this.root,country);
+                }
+            }
         }else{
            DefaultMutableTreeNode selectTreeNode=(DefaultMutableTreeNode)evt.getPath().getLastPathComponent();
            if(selectTreeNode.getUserObject() instanceof Country){
@@ -210,8 +216,15 @@ public class CountryForm extends javax.swing.JDialog {
                 LOGGER.info("Object info"+country.getCountryName());
                 isStateNode=true;
                 isCountryNode=false;
+                isCityNode=false;
                 this.selectedCountry=country;
                 addStateModel(this.selectedCountry);
+           }else if(selectTreeNode.getUserObject() instanceof State){
+                isStateNode=false;
+                isCountryNode=false;
+                isCityNode=true;
+                this.selectedState=(State)selectTreeNode.getUserObject();
+                addCityModel(this.selectedState);
            }
         }
     }//GEN-LAST:event_countryJtreeValueChanged
@@ -219,12 +232,11 @@ public class CountryForm extends javax.swing.JDialog {
        
     }//GEN-LAST:event_countryJtreeMouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void newActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newActionBtnActionPerformed
         LOGGER.info("isStateSelected"+isStateNode);
         if(isCountryNode){
            countrys.add(new Country());
            countryTableModel.fireTableDataChanged();
-           countryTable.repaint();
        }else if(isStateNode){
            if(this.selectedCountry.getStates()==null){
                this.selectedCountry.setStates(new ArrayList<>());
@@ -232,49 +244,115 @@ public class CountryForm extends javax.swing.JDialog {
            LOGGER.info("*************Instered State Row****************");
            this.selectedCountry.getStates().add(new State());
            stateTableModel.fireTableDataChanged();
-           countryTable.repaint();
+           addStateModel(this.selectedCountry);
+       }else if(isCityNode){
+           if(this.selectedState.getCitys()==null){
+               this.selectedState.setCitys(new ArrayList<>());
+           }
+           this.selectedState.getCitys().add(new City());
+           cityTableModel.fireTableDataChanged();
+           addCityModel(this.selectedState);
        }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_newActionBtnActionPerformed
+    private int removeNode(final DefaultMutableTreeNode node, final String childValue) {
+        Enumeration<DefaultMutableTreeNode> children = node.children();
+        DefaultMutableTreeNode child = null;
+        int index = -1;
+        while (children.hasMoreElements() && index < 0) {
+            child = children.nextElement();
+            if(child.getUserObject() instanceof Country){
+                Country country=(Country)child.getUserObject();
+                if (country!=null && childValue.equals(country.getCountryName())) {
+                     child.removeFromParent();
+                }
+            }else if(child.getUserObject() instanceof State){
+                State state=(State)child.getUserObject();
+                if (state!=null && childValue.equals(state.getStateName())) {
+                    child.removeFromParent();
+                } 
+            }else{
+                City city=(City)child.getUserObject();
+                if(city!=null && childValue.equals(city.getCityName())){
+                    child.removeFromParent();
+                }
+            }
+        }
+        return index;
+    }
+    private void deleteActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionBtnActionPerformed
+        int row=countryTable.getSelectedRow();
+        if(row!=-1){
+            this.selectedPath=countryJtree.getSelectionPath();
+            DefaultMutableTreeNode node=(DefaultMutableTreeNode)this.selectedPath.getLastPathComponent();
+            if(isCountryNode){
+                Country country=countryTableModel.findRow(row);
+                countryTableModel.removeRow(row);
+                userService.delete(country);
+                removeNode(root,country.getCountryName());
+                model.reload(root);
+            }else if(isStateNode){
+                State state=stateTableModel.findRow(row);
+                stateTableModel.removeRow(row);
+                userService.save(selectedCountry);
+                removeNode(node,state.getStateName());
+                model.reload(node);
+            }else if(isCityNode){
+                City city=cityTableModel.findRow(row);
+                cityTableModel.removeRow(row);
+                removeNode(node,city.getCityName());
+                userService.save(this.selectedCountry);
+                model.reload(node);
+            }
+            countryJtree.setSelectionPath(selectedPath);
+            countryJtree.expandPath(this.selectedPath);
+            StandaloneUtils.dialogBox(ServiceConstant.ACTION_DELETE,this);
+        }
+    }//GEN-LAST:event_deleteActionBtnActionPerformed
     private void addCountryModel(){
         countryTable.removeAll();
         if(countrys==null){countrys=new ArrayList<Country>();}
         countryTableModel=new CountryTableModel(countrys);
         countryTable.setModel(countryTableModel);
-        countryTable.getModel().addTableModelListener(new TableModelListener() {
-            @Override
-            public void tableChanged(TableModelEvent e) {
-                int firstRow = e.getFirstRow();
-                int lastRow = e.getLastRow();
-                int index = e.getColumn();
-                switch(e.getType()){
-                    case TableModelEvent.INSERT:
-                        LOGGER.info("***Inserted****");
-                        break;
-                }
-            }
-        });
     }
     private void addStateModel(final Country country){
         countryTable.removeAll();
         stateTableModel=new StateTableModel(country);
         countryTable.setModel(stateTableModel);
     }
+    private void addCityModel(final State state){
+        countryTable.removeAll();
+        cityTableModel=new CityTableModel(state);
+        countryTable.setModel(cityTableModel);
+    }
+    private void save(){
+        userService.save(countrys);
+    }
+    @PostConstruct
+    private void loadData(){
+        this.countrys=(ArrayList<Country>)userService.findCountries();
+    }
     private static final Logger LOGGER=LoggerFactory.getLogger(CountryForm.class);
     private CountryTableModel countryTableModel;
     private StateTableModel stateTableModel;
+    private CityTableModel cityTableModel;
     private boolean isCountryNode=false;
     private ArrayList<Country> countrys;
     private boolean isStateNode=false;
+    private boolean isCityNode=false;
     private Country selectedCountry=null;
+    private State selectedState=null;
+    private DefaultTreeModel model=null;
+    private DefaultMutableTreeNode root=null;
+    private TreePath selectedPath=null;
+    @Autowired private UserService userService;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTree countryJtree;
     private javax.swing.JTable countryTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton deleteActionBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private com.srm.components.JXImagePanel jXImagePanel1;
+    private javax.swing.JButton newActionBtn;
+    private javax.swing.JButton saveActionBtn;
     // End of variables declaration//GEN-END:variables
 }

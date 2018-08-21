@@ -9,11 +9,13 @@ import com.srm.services.config.ServiceConstant;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 
 /**
@@ -32,8 +34,13 @@ public class StandaloneUtils {
             LOGGER.error("Exception",ex);
         }
     }
-    public static void setScreenCenter(JDialog jdialogForm,JFrame jFrame){
-        jdialogForm.setLocationRelativeTo(jFrame);
+    public static void setScreenCenter(JDialog jdialogForm,JFrame parent){
+        jdialogForm.setLocationRelativeTo(parent);
+        jdialogForm.setAlwaysOnTop(true);
+        jdialogForm.show();
+    }
+    public static void setScreenCenter(JDialog jdialogForm,JComponent parent){
+        jdialogForm.setLocationRelativeTo(parent);
         jdialogForm.setAlwaysOnTop(true);
         jdialogForm.show();
     }
@@ -51,5 +58,29 @@ public class StandaloneUtils {
            JOptionPane.showMessageDialog(component, ServiceConstant.LOGIN_FAILURE_MSG, ServiceConstant.RESULT_FAIURE,
                         JOptionPane.WARNING_MESSAGE); 
        }
+    }
+     public static void dialogBox(String message,Component component){
+         JOptionPane.showMessageDialog(component,message, ServiceConstant.RESULT_FAIURE,
+                        JOptionPane.WARNING_MESSAGE); 
+    }
+    public static boolean emailValidation(String email,final StringBuilder builder){
+        if(StringUtils.isEmpty(email)){
+            builder.append(ServiceConstant.MANDATORY_EMAIL);
+            return true;
+        }else{
+            return false;
+        }
+    } 
+    public static boolean passwordValidation(String pwd,String cfPwd,final StringBuilder builder){
+        if(!StringUtils.isEmpty(pwd) && !StringUtils.isEmpty(cfPwd)){
+             if(pwd.equals(cfPwd)){
+                 return false;
+             }else{
+                 builder.append("\n"+ServiceConstant.CONFIRM_PWD);
+                 return true;
+             } 
+        }else{
+            return true;
+        }
     }
 }

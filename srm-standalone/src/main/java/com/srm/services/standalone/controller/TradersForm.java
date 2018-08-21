@@ -5,20 +5,38 @@
  */
 package com.srm.services.standalone.controller;
 
+import com.srm.services.config.ServiceConstant;
+import com.srm.services.modal.Traders;
+import com.srm.services.services.TradersService;
+import com.srm.services.standalone.model.TraderTableModel;
+import com.srm.services.standalone.utils.StandaloneUtils;
+import javax.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 /**
  *
  * @author umprasad
  */
 public class TradersForm extends javax.swing.JDialog {
-
+    
     /**
      * Creates new form TradersForm
      */
     public TradersForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setModel();
     }
-
+    private void setModel(){
+         traderTableModel=new TraderTableModel(null);
+         tradersTable.setModel(traderTableModel);
+    }
+    @PostConstruct
+    private void loadData(){
+        traderTableModel.clearRows();
+        traderTableModel.addRows(tradersService.findAllTraders());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,21 +46,28 @@ public class TradersForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jXImagePanel1 = new com.srm.components.JXImagePanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tradernameTxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        addressTxtArea = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        mobileNoTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tinnoTxt = new javax.swing.JTextField();
+        jXImagePanel2 = new com.srm.components.JXImagePanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tradersTable = new javax.swing.JTable();
+        deleteActionBtn = new javax.swing.JButton();
+        saveActionBtn = new javax.swing.JButton();
+        updateActionBtn = new javax.swing.JButton();
+        newActionBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jTabbedPane1.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
 
         jXImagePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/app-background.png"))); // NOI18N
 
@@ -52,20 +77,12 @@ public class TradersForm extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel2.setText("Address");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        addressTxtArea.setColumns(20);
+        addressTxtArea.setRows(5);
+        jScrollPane1.setViewportView(addressTxtArea);
 
         jLabel3.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel3.setText("Mobile no.,");
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
-        jButton1.setText("Save");
-
-        jButton2.setText("Update");
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button_1.png"))); // NOI18N
-        jButton3.setText("Delete");
 
         jLabel4.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel4.setText("TIN NO.,");
@@ -74,14 +91,6 @@ public class TradersForm extends javax.swing.JDialog {
         jXImagePanel1.setLayout(jXImagePanel1Layout);
         jXImagePanel1Layout.setHorizontalGroup(
             jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
             .addGroup(jXImagePanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,16 +101,16 @@ public class TradersForm extends javax.swing.JDialog {
                         .addGap(41, 41, 41)
                         .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(mobileNoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jXImagePanel1Layout.createSequentialGroup()
                         .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(157, Short.MAX_VALUE))
+                            .addComponent(tradernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tinnoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
         jXImagePanel1Layout.setVerticalGroup(
             jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,53 +118,219 @@ public class TradersForm extends javax.swing.JDialog {
                 .addGap(58, 58, 58)
                 .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tradernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                    .addComponent(tinnoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mobileNoTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(32, 32, 32)
-                .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61))
+                .addGap(47, 47, 47))
         );
+
+        jTabbedPane1.addTab("Trader Form", jXImagePanel1);
+
+        jXImagePanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/app-background.png"))); // NOI18N
+
+        tradersTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tradersTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tradersTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tradersTable);
+
+        deleteActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button_1.png"))); // NOI18N
+        deleteActionBtn.setText("Delete");
+        deleteActionBtn.setEnabled(false);
+        deleteActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jXImagePanel2Layout = new javax.swing.GroupLayout(jXImagePanel2);
+        jXImagePanel2.setLayout(jXImagePanel2Layout);
+        jXImagePanel2Layout.setHorizontalGroup(
+            jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXImagePanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 877, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(deleteActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jXImagePanel2Layout.setVerticalGroup(
+            jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXImagePanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deleteActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Trader list", jXImagePanel2);
+
+        saveActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        saveActionBtn.setText("Save");
+        saveActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionBtnActionPerformed(evt);
+            }
+        });
+
+        updateActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        updateActionBtn.setText("Update");
+        updateActionBtn.setEnabled(false);
+        updateActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionBtnActionPerformed(evt);
+            }
+        });
+
+        newActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/file.png"))); // NOI18N
+        newActionBtn.setText("New");
+        newActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newActionBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jXImagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(newActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(updateActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jXImagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void saveActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionBtnActionPerformed
+        try{
+              Traders traders=new Traders();
+              traders.setTraderName(tradernameTxt.getText());
+              traders.setTinNo(tinnoTxt.getText());
+              traders.setAddress(addressTxtArea.getText());
+              traders.setMobileNo(mobileNoTxt.getText());
+              traders=tradersService.save(traders);
+              traderTableModel.addRow(traders);
+              StandaloneUtils.dialogBox(ServiceConstant.ACTION_SAVE,this);
+        }catch(Exception ex){
+            LOGGER.error("Excpetion{}",ex);
+            StandaloneUtils.dialogBox(ServiceConstant.TECHNICAL_ERROR_MSG,this);
+        }
+    }//GEN-LAST:event_saveActionBtnActionPerformed
+
+    private void newActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newActionBtnActionPerformed
+        tradernameTxt.setText("");
+        tinnoTxt.setText("");
+        addressTxtArea.setText("");
+        mobileNoTxt.setText("");
+        saveActionBtn.setEnabled(true);
+        updateActionBtn.setEnabled(false);
+        deleteActionBtn.setEnabled(false);
+    }//GEN-LAST:event_newActionBtnActionPerformed
+
+    private void tradersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tradersTableMouseClicked
+        int row=tradersTable.getSelectedRow();
+        if(row!=-1){
+            seleObj=traderTableModel.getRow(row);
+            tradernameTxt.setText(seleObj.getTraderName());
+            tinnoTxt.setText(seleObj.getTinNo());
+            addressTxtArea.setText(seleObj.getAddress());
+            mobileNoTxt.setText(seleObj.getMobileNo());
+            updateActionBtn.setEnabled(true);
+            saveActionBtn.setEnabled(false);
+            deleteActionBtn.setEnabled(true);
+        }
+    }//GEN-LAST:event_tradersTableMouseClicked
+
+    private void deleteActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionBtnActionPerformed
+        try{
+            tradersService.deleteOneTrader(seleObj);
+            traderTableModel.removeRow(seleObj);
+            newActionBtnActionPerformed(evt);
+            StandaloneUtils.dialogBox(ServiceConstant.ACTION_DELETE,this);
+        }catch(Exception ex){
+            LOGGER.error("Exception{}",ex);
+            StandaloneUtils.dialogBox(ServiceConstant.TECHNICAL_ERROR_MSG,this);
+        }
+    }//GEN-LAST:event_deleteActionBtnActionPerformed
+
+    private void updateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionBtnActionPerformed
+        try{
+              seleObj.setTraderName(tradernameTxt.getText());
+              seleObj.setTinNo(tinnoTxt.getText());
+              seleObj.setAddress(addressTxtArea.getText());
+              seleObj.setMobileNo(mobileNoTxt.getText());
+              tradersService.update(seleObj);
+              traderTableModel.refresh();
+              StandaloneUtils.dialogBox(ServiceConstant.UPDATE_MSG,this);
+        }catch(Exception ex){
+            LOGGER.error("Excpetion{}",ex);
+            StandaloneUtils.dialogBox(ServiceConstant.TECHNICAL_ERROR_MSG,this);
+        }
+    }//GEN-LAST:event_updateActionBtnActionPerformed
+    private final static Logger LOGGER=LoggerFactory.getLogger(TradersForm.class); 
+    @Autowired private TradersService tradersService;
+    private TraderTableModel traderTableModel;
+    private Traders seleObj;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JTextArea addressTxtArea;
+    private javax.swing.JButton deleteActionBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private com.srm.components.JXImagePanel jXImagePanel1;
+    private com.srm.components.JXImagePanel jXImagePanel2;
+    private javax.swing.JTextField mobileNoTxt;
+    private javax.swing.JButton newActionBtn;
+    private javax.swing.JButton saveActionBtn;
+    private javax.swing.JTextField tinnoTxt;
+    private javax.swing.JTextField tradernameTxt;
+    private javax.swing.JTable tradersTable;
+    private javax.swing.JButton updateActionBtn;
     // End of variables declaration//GEN-END:variables
 }

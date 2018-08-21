@@ -6,9 +6,21 @@
 package com.srm.services.standalone.controller;
 
 import com.srm.services.config.ServiceConstant;
+import com.srm.services.modal.Address;
+import com.srm.services.modal.Country;
+import com.srm.services.modal.State;
 import com.srm.services.modal.User;
 import com.srm.services.services.UserService;
+import com.srm.services.standalone.encription.SecureEncryption;
+import com.srm.services.standalone.model.UserTableModel;
 import com.srm.services.standalone.utils.StandaloneUtils;
+import java.awt.event.ItemEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.swing.DefaultComboBoxModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -23,6 +35,9 @@ public class UserSignForm extends javax.swing.JDialog {
     public UserSignForm(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        if(users==null){users=new ArrayList<>();}
+        userTableModel=new UserTableModel(users);
+        userDataTable.setModel(userTableModel);
     }
 
     /**
@@ -52,25 +67,31 @@ public class UserSignForm extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        addressTxtArea = new javax.swing.JTextArea();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        countryActionBox = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        stateActionBox = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cityActionBox = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        pincodeTxt = new javax.swing.JTextField();
         jXImagePanel2 = new com.srm.components.JXImagePanel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        displaynameTxt = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        passwordTxt = new javax.swing.JPasswordField();
+        cfmPasswordTxt = new javax.swing.JPasswordField();
+        jXImagePanel5 = new com.srm.components.JXImagePanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        userDataTable = new javax.swing.JTable();
+        deleteActionBtn = new javax.swing.JButton();
+        showActionBtn = new javax.swing.JButton();
+        saveActionBtn = new javax.swing.JButton();
+        refreshActionBtn = new javax.swing.JButton();
+        newActionBtn = new javax.swing.JButton();
+        updateActionBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -83,6 +104,7 @@ public class UserSignForm extends javax.swing.JDialog {
 
         jXImagePanel3.setBackground(java.awt.Color.lightGray);
         jXImagePanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NAME", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Engravers MT", 0, 16))); // NOI18N
+        jXImagePanel3.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel1.setText("First");
@@ -134,6 +156,7 @@ public class UserSignForm extends javax.swing.JDialog {
 
         jXImagePanel4.setBackground(java.awt.Color.lightGray);
         jXImagePanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contact", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Engravers MT", 0, 16))); // NOI18N
+        jXImagePanel4.setOpaque(false);
 
         jLabel4.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel4.setText("Email id");
@@ -200,24 +223,34 @@ public class UserSignForm extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel6.setText("Country");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        addressTxtArea.setColumns(20);
+        addressTxtArea.setRows(5);
+        jScrollPane1.setViewportView(addressTxtArea);
 
         jLabel7.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel7.setText("address");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        countryActionBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select--" }));
+        countryActionBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                countryActionBoxItemStateChanged(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel8.setText("state");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        stateActionBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select--" }));
+        stateActionBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                stateActionBoxItemStateChanged(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel9.setText("CITY");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cityActionBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select--" }));
 
         jLabel10.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
         jLabel10.setText("pin code");
@@ -230,11 +263,13 @@ public class UserSignForm extends javax.swing.JDialog {
                 .addGap(78, 78, 78)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
                         .addGap(104, 104, 104)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(countryActionBox, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -245,44 +280,39 @@ public class UserSignForm extends javax.swing.JDialog {
                                 .addGap(82, 82, 82)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(stateActionBox, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(70, 70, 70)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextField6))))
+                            .addComponent(pincodeTxt))))
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cityActionBox, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(104, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(72, 72, 72)
-                    .addComponent(jLabel7)
-                    .addContainerGap(938, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel7)))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(countryActionBox, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(stateActionBox, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cityActionBox, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pincodeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(169, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(71, 71, 71)
-                    .addComponent(jLabel7)
-                    .addContainerGap(515, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Address", jPanel2);
@@ -310,9 +340,9 @@ public class UserSignForm extends javax.swing.JDialog {
                     .addComponent(jLabel13))
                 .addGap(101, 101, 101)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPasswordField1)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
-                    .addComponent(jPasswordField2))
+                    .addComponent(passwordTxt)
+                    .addComponent(displaynameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                    .addComponent(cfmPasswordTxt))
                 .addGap(352, 352, 352))
         );
         jXImagePanel2Layout.setVerticalGroup(
@@ -321,33 +351,116 @@ public class UserSignForm extends javax.swing.JDialog {
                 .addGap(44, 44, 44)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(displaynameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cfmPasswordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addContainerGap(406, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Others", jXImagePanel2);
 
-        jButton1.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        userDataTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(userDataTable);
+
+        deleteActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        deleteActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/x-button_1.png"))); // NOI18N
+        deleteActionBtn.setText("Delete");
+        deleteActionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                deleteActionBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
-        jButton2.setText("Remove");
+        showActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        showActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/show.png"))); // NOI18N
+        showActionBtn.setText("Show");
+        showActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showActionBtnActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
-        jButton3.setText("Refresh");
+        javax.swing.GroupLayout jXImagePanel5Layout = new javax.swing.GroupLayout(jXImagePanel5);
+        jXImagePanel5.setLayout(jXImagePanel5Layout);
+        jXImagePanel5Layout.setHorizontalGroup(
+            jXImagePanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXImagePanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jXImagePanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1081, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(showActionBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteActionBtn)))
+                .addContainerGap())
+        );
+        jXImagePanel5Layout.setVerticalGroup(
+            jXImagePanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXImagePanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(jXImagePanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(showActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Users", jXImagePanel5);
+
+        saveActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        saveActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        saveActionBtn.setText("Save");
+        saveActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionBtnActionPerformed(evt);
+            }
+        });
+
+        refreshActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        refreshActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/refresh.png"))); // NOI18N
+        refreshActionBtn.setText("Refresh");
+        refreshActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshActionBtnActionPerformed(evt);
+            }
+        });
+
+        newActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        newActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/file.png"))); // NOI18N
+        newActionBtn.setText("New");
+        newActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newActionBtnActionPerformed(evt);
+            }
+        });
+
+        updateActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        updateActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
+        updateActionBtn.setText("Update");
+        updateActionBtn.setEnabled(false);
+        updateActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jXImagePanel1Layout = new javax.swing.GroupLayout(jXImagePanel1);
         jXImagePanel1.setLayout(jXImagePanel1Layout);
@@ -355,16 +468,18 @@ public class UserSignForm extends javax.swing.JDialog {
             jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXImagePanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(newActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updateActionBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(refreshActionBtn)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(50, 50, 50))
         );
         jXImagePanel1Layout.setVerticalGroup(
             jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,50 +487,217 @@ public class UserSignForm extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newActionBtn)
+                    .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshActionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jXImagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jXImagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jXImagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jXImagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        landingForm.startSpiner();
-        User user=new User();
-        user.setEmailId(emailIdTxt.getText());
-        user.setFirstName(firstNameTxt.getText());
-        user.setLastName(lastNameTxt.getText());
-        user.setMiddleName(middleNameTxt.getText());
-        userService.save(user);
-        StandaloneUtils.dialogBox(ServiceConstant.ACTION_SAVE,this);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void saveActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionBtnActionPerformed
+        landingForm.startSpinner();
+        try{
+            errorMsg=new StringBuilder();
+            User user=new User();
+            user.setEmailId(emailIdTxt.getText());
+            LOGGER.info("Email_id{}"+user.getEmailId());
+            user.setFirstName(firstNameTxt.getText());
+            user.setLastName(lastNameTxt.getText());
+            user.setMiddleName(middleNameTxt.getText());
+            user.setPassword(encryption.encrypt(cfmPasswordTxt.getText()));
+            Address address=new Address();
+            address.setAddress(addressTxtArea.getText());
+            address.setCountry(countryActionBox.getSelectedItem().toString());
+            address.setState(stateActionBox.getSelectedItem().toString());
+            address.setCity(cityActionBox.getSelectedItem().toString());
+            address.setPinCode(pincodeTxt.getText());
+            user.setAddress(address);
+            user.setDisplayName(displaynameTxt.getText());
+            user.setMobileNo(mobileNoTxt.getText());
+           if(!StandaloneUtils.emailValidation(user.getEmailId(), errorMsg) && 
+                   !StandaloneUtils.passwordValidation(user.getPassword(),cfmPasswordTxt.getPassword().toString(),errorMsg)){ 
+               User savedUser=userService.save(user);
+               users.add(savedUser);
+               StandaloneUtils.dialogBox(ServiceConstant.ACTION_SAVE,this);
+               landingForm.stopSpinner();
+           }else{
+               StandaloneUtils.dialogBox(errorMsg.toString(),this);
+               landingForm.stopSpinner();
+           }
+        }catch(Exception ex){
+            LOGGER.error("Exception{}",ex);
+            StandaloneUtils.dialogBox("Email ID Already Exist",this);
+            landingForm.stopSpinner();
+        }
+    }//GEN-LAST:event_saveActionBtnActionPerformed
 
+    private void countryActionBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_countryActionBoxItemStateChanged
+       String value=null;
+       value=countryActionBox.getSelectedItem().toString();
+       if(evt.getStateChange()==ItemEvent.SELECTED && countryActionBox.getSelectedIndex()!=0){
+            LOGGER.info("Selected Value{}"+value);
+            stateActionBox.removeAllItems();
+            List<State> states=userService.findStatesByCoutryName(value);
+            ((DefaultComboBoxModel)stateActionBox.getModel()).addElement(ServiceConstant.DEFAULT_VALUE);
+            if(states!=null){
+                states.forEach(state->((DefaultComboBoxModel)stateActionBox.getModel()).addElement(state.getStateName()));
+            }
+       }
+    }//GEN-LAST:event_countryActionBoxItemStateChanged
+
+    private void stateActionBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_stateActionBoxItemStateChanged
+        String value=null;
+        if(evt.getStateChange()==ItemEvent.SELECTED && stateActionBox.getSelectedIndex()!=0){
+            value=stateActionBox.getSelectedItem().toString();
+            cityActionBox.removeAllItems();
+            ((DefaultComboBoxModel)cityActionBox.getModel()).addElement(ServiceConstant.DEFAULT_VALUE);
+            List<String> cities=userService.findCityesByState(value);
+            if(cities!=null){
+                cities.forEach(cityname->((DefaultComboBoxModel)cityActionBox.getModel()).addElement(cityname));
+            }
+       }
+    }//GEN-LAST:event_stateActionBoxItemStateChanged
+
+    private void refreshActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionBtnActionPerformed
+          firstNameTxt.setText("");
+          middleNameTxt.setText("");
+          lastNameTxt.setText("");
+          emailIdTxt.setText("");
+          mobileNoTxt.setText("");
+          addressTxtArea.setText("");
+          displaynameTxt.setText("");
+          passwordTxt.setText("");
+          cfmPasswordTxt.setText("");
+          countryActionBox.setSelectedIndex(0);
+          stateActionBox.removeAllItems();
+          cityActionBox.removeAllItems();
+          displaynameTxt.setText("");
+          passwordTxt.setText("");
+          cfmPasswordTxt.setText("");
+          emailIdTxt.setEditable(Boolean.TRUE);
+          updateActionBtn.setEnabled(Boolean.FALSE);
+          saveActionBtn.setEnabled(Boolean.TRUE);
+          userTableModel.removeAll();
+          this.loadData();
+    }//GEN-LAST:event_refreshActionBtnActionPerformed
+
+    private void newActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newActionBtnActionPerformed
+        refreshActionBtnActionPerformed(evt);
+    }//GEN-LAST:event_newActionBtnActionPerformed
+
+    private void showActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionBtnActionPerformed
+        int row=userDataTable.getSelectedRow();
+       try{  
+        if(row!=-1){
+            User user=userTableModel.getSelectedRow(row);
+            firstNameTxt.setText(user.getFirstName());
+            middleNameTxt.setText(user.getMiddleName());
+            lastNameTxt.setText(user.getLastName());
+            emailIdTxt.setText(user.getEmailId());
+            mobileNoTxt.setText(user.getMobileNo());
+            displaynameTxt.setText(user.getDisplayName());
+            passwordTxt.setText(encryption.decrypt(user.getPassword()));
+            cfmPasswordTxt.setText(encryption.decrypt(user.getPassword()));
+            Address address=user.getAddress();
+            if(address!=null){
+                addressTxtArea.setText(address.getAddress());
+                countryActionBox.setSelectedItem(address.getCountry());
+                stateActionBox.setSelectedItem(address.getState());
+                cityActionBox.setSelectedItem(address.getCity());
+            }
+            updateActionBtn.setEnabled(Boolean.TRUE);
+            saveActionBtn.setEnabled(Boolean.FALSE);
+            emailIdTxt.setEditable(Boolean.FALSE);
+        }
+       }catch(Exception ex){
+           LOGGER.error("Excpetion{}",ex);
+       }
+    }//GEN-LAST:event_showActionBtnActionPerformed
+
+    private void deleteActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionBtnActionPerformed
+        try{
+            int row=userDataTable.getSelectedRow();
+            if(row!=-1){
+                User user=userTableModel.getSelectedRow(row);
+                userService.delete(user);
+                userTableModel.removeRow(row);
+                StandaloneUtils.dialogBox(ServiceConstant.ACTION_UPDATE,this);
+            }
+        }catch(Exception ex){
+            LOGGER.error("Excpetion",ex);
+            StandaloneUtils.dialogBox(ServiceConstant.TECHNICAL_ERROR_MSG,this);
+        }
+    }//GEN-LAST:event_deleteActionBtnActionPerformed
+
+    private void updateActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionBtnActionPerformed
+        try{
+            int row=userDataTable.getSelectedRow();
+            if(row!=-1){
+                User user=userTableModel.getSelectedRow(row);
+                user.setLastName(lastNameTxt.getText());
+                user.setMiddleName(middleNameTxt.getText());
+                user.setPassword(encryption.encrypt(cfmPasswordTxt.getText()));
+                Address address=new Address();
+                address.setAddress(addressTxtArea.getText());
+                address.setCountry(countryActionBox.getSelectedItem().toString());
+                address.setState(stateActionBox.getSelectedItem().toString());
+                address.setCity(cityActionBox.getSelectedItem().toString());
+                address.setPinCode(pincodeTxt.getText());
+                user.setAddress(address);
+                user.setDisplayName(displaynameTxt.getText());
+                user.setMobileNo(mobileNoTxt.getText());
+                user=userService.updateUser(user);
+                if(user!=null){
+                     StandaloneUtils.dialogBox(ServiceConstant.ACTION_UPDATE,this);
+                }
+            }
+        }catch(Exception ex){
+            LOGGER.error("Exception{}",ex);
+            StandaloneUtils.dialogBox(ServiceConstant.TECHNICAL_ERROR_MSG,this);
+        }
+    }//GEN-LAST:event_updateActionBtnActionPerformed
+    @PostConstruct
+    private void loadData(){
+        countryModel.addElement(ServiceConstant.DEFAULT_VALUE);
+        countrys=userService.findCountries();
+        countryActionBox.setModel(countryModel);
+        countrys.forEach(country->countryModel.addElement(country.getCountryName()));
+        users.addAll(userService.findAllUsers());
+        userTableModel.fireTableDataChanged();
+    }
     @Autowired private UserService userService;
     @Autowired private LandingForm landingForm;
+    @Autowired private SecureEncryption encryption;
+    private DefaultComboBoxModel countryModel=new DefaultComboBoxModel();
+    private List<Country> countrys=null;
+    private List<User> users=null;
+    private UserTableModel userTableModel=null;
+    private final static Logger LOGGER=LoggerFactory.getLogger(UserSignForm.class);
+    private StringBuilder errorMsg;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea addressTxtArea;
+    private javax.swing.JPasswordField cfmPasswordTxt;
+    private javax.swing.JComboBox<String> cityActionBox;
+    private javax.swing.JComboBox<String> countryActionBox;
+    private javax.swing.JButton deleteActionBtn;
+    private javax.swing.JTextField displaynameTxt;
     private javax.swing.JTextField emailIdTxt;
     private javax.swing.JTextField firstNameTxt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -431,19 +713,25 @@ public class UserSignForm extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private com.srm.components.JXImagePanel jXImagePanel1;
     private com.srm.components.JXImagePanel jXImagePanel2;
     private com.srm.components.JXImagePanel jXImagePanel3;
     private com.srm.components.JXImagePanel jXImagePanel4;
+    private com.srm.components.JXImagePanel jXImagePanel5;
     private javax.swing.JTextField lastNameTxt;
     private javax.swing.JTextField middleNameTxt;
     private javax.swing.JTextField mobileNoTxt;
+    private javax.swing.JButton newActionBtn;
+    private javax.swing.JPasswordField passwordTxt;
+    private javax.swing.JTextField pincodeTxt;
+    private javax.swing.JButton refreshActionBtn;
+    private javax.swing.JButton saveActionBtn;
+    private javax.swing.JButton showActionBtn;
+    private javax.swing.JComboBox<String> stateActionBox;
+    private javax.swing.JButton updateActionBtn;
+    private javax.swing.JTable userDataTable;
     // End of variables declaration//GEN-END:variables
 }
