@@ -7,11 +7,13 @@ package com.srm.services.modal;
 
 import java.io.Serializable;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
  * @author umprasad
  */
+@Document(collection ="Units")
 public class UnitType implements Serializable{
     
     @Id

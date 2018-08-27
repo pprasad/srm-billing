@@ -5,11 +5,22 @@
  */
 package com.srm.services.standalone.controller;
 
+import com.srm.services.modal.Dashboard;
+import com.srm.services.modal.PurchaseStock;
+import com.srm.services.modal.SalesBillStock;
+import com.srm.services.services.SalesBillService;
+import com.srm.services.services.TradersService;
+import com.srm.services.standalone.launch.LoginForm;
+import com.srm.services.standalone.model.UserInfoSession;
+import com.srm.services.standalone.settings.HeaderSetting;
 import com.srm.services.standalone.utils.StandaloneUtils;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,12 +52,19 @@ public class LandingForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jXImagePanel2 = new com.srm.components.JXImagePanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        singInLabel = new javax.swing.JLabel();
+        logOutActionBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jXImagePanel1 = new com.srm.components.JXImagePanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jXImagePanel4 = new com.srm.components.JXImagePanel();
+        jLabel5 = new javax.swing.JLabel();
+        purchaseStockLabel = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        salesStockLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jXImagePanel5 = new com.srm.components.JXImagePanel();
@@ -59,6 +77,9 @@ public class LandingForm extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         unitTypeActionBtn = new javax.swing.JButton();
+        headerSettingActionBtn = new javax.swing.JButton();
+        jXImagePanel7 = new com.srm.components.JXImagePanel();
+        salesBillActionBtn = new javax.swing.JButton();
         jXStatusBar1 = new com.srm.components.JXStatusBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,19 +106,47 @@ public class LandingForm extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
         );
 
+        jLabel4.setFont(new java.awt.Font("Engravers MT", 0, 18)); // NOI18N
+        jLabel4.setText("Sing In");
+
+        singInLabel.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        singInLabel.setForeground(new java.awt.Color(204, 102, 0));
+        singInLabel.setText("Sing In");
+
+        logOutActionBtn.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        logOutActionBtn.setText("LogOut");
+        logOutActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logOutActionBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jXImagePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(singInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logOutActionBtn)
+                .addGap(16, 16, 16))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jXImagePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(singInLabel)
+                    .addComponent(logOutActionBtn))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -133,6 +182,18 @@ public class LandingForm extends javax.swing.JFrame {
             .addGap(0, 111, Short.MAX_VALUE)
         );
 
+        jLabel5.setFont(new java.awt.Font("Engravers MT", 1, 14)); // NOI18N
+        jLabel5.setText("PURchase stock");
+
+        purchaseStockLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        purchaseStockLabel.setText("0");
+
+        jLabel6.setFont(new java.awt.Font("Engravers MT", 1, 14)); // NOI18N
+        jLabel6.setText("sales stock");
+
+        salesStockLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        salesStockLabel.setText("0");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -141,16 +202,31 @@ public class LandingForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jXImagePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(296, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(salesStockLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addComponent(purchaseStockLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jXImagePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jXImagePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(purchaseStockLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(salesStockLabel)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -180,7 +256,7 @@ public class LandingForm extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jXImagePanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,9 +267,9 @@ public class LandingForm extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jXImagePanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jXImagePanel1Layout = new javax.swing.GroupLayout(jXImagePanel1);
@@ -201,20 +277,20 @@ public class LandingForm extends javax.swing.JFrame {
         jXImagePanel1Layout.setHorizontalGroup(
             jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(15, 15, 15)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(28, 28, 28)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(448, Short.MAX_VALUE))
+                .addContainerGap(591, Short.MAX_VALUE))
         );
         jXImagePanel1Layout.setVerticalGroup(
             jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXImagePanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addGroup(jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(365, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("DASHBOARD", jXImagePanel1);
@@ -336,6 +412,17 @@ public class LandingForm extends javax.swing.JFrame {
             }
         });
 
+        headerSettingActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        headerSettingActionBtn.setText("Header");
+        headerSettingActionBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        headerSettingActionBtn.setVerifyInputWhenFocusTarget(false);
+        headerSettingActionBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        headerSettingActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                headerSettingActionBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jXImagePanel6Layout = new javax.swing.GroupLayout(jXImagePanel6);
         jXImagePanel6.setLayout(jXImagePanel6Layout);
         jXImagePanel6Layout.setHorizontalGroup(
@@ -347,13 +434,16 @@ public class LandingForm extends javax.swing.JFrame {
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(unitTypeActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(733, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(headerSettingActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(555, Short.MAX_VALUE))
         );
         jXImagePanel6Layout.setVerticalGroup(
             jXImagePanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXImagePanel6Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jXImagePanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(headerSettingActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(unitTypeActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -361,6 +451,39 @@ public class LandingForm extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("settings", jXImagePanel6);
+
+        jXImagePanel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/app-background.png"))); // NOI18N
+
+        salesBillActionBtn.setFont(new java.awt.Font("Engravers MT", 0, 16)); // NOI18N
+        salesBillActionBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/invoice-64.png"))); // NOI18N
+        salesBillActionBtn.setText("sales bill");
+        salesBillActionBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        salesBillActionBtn.setVerifyInputWhenFocusTarget(false);
+        salesBillActionBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        salesBillActionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salesBillActionBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jXImagePanel7Layout = new javax.swing.GroupLayout(jXImagePanel7);
+        jXImagePanel7.setLayout(jXImagePanel7Layout);
+        jXImagePanel7Layout.setHorizontalGroup(
+            jXImagePanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXImagePanel7Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(salesBillActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1123, Short.MAX_VALUE))
+        );
+        jXImagePanel7Layout.setVerticalGroup(
+            jXImagePanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXImagePanel7Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(salesBillActionBtn)
+                .addContainerGap(429, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("sales bill", jXImagePanel7);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -427,6 +550,21 @@ public class LandingForm extends javax.swing.JFrame {
         unitTypeForm.loadInitalData();
         StandaloneUtils.setScreenCenter(unitTypeForm, this);
     }//GEN-LAST:event_unitTypeActionBtnActionPerformed
+
+    private void salesBillActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesBillActionBtnActionPerformed
+        salesBillForm.setAlwaysOnTop(true);
+        StandaloneUtils.setScreenCenter(salesBillForm);
+        salesBillForm.show();
+    }//GEN-LAST:event_salesBillActionBtnActionPerformed
+
+    private void logOutActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionBtnActionPerformed
+        this.show(false);
+        loginForm.show();
+    }//GEN-LAST:event_logOutActionBtnActionPerformed
+
+    private void headerSettingActionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headerSettingActionBtnActionPerformed
+        StandaloneUtils.setScreenCenter(headerSetting,rootPane);
+    }//GEN-LAST:event_headerSettingActionBtnActionPerformed
     public void startSpinner(){
         progressBar.start();
     }
@@ -442,6 +580,41 @@ public class LandingForm extends javax.swing.JFrame {
                 jProgressBar.setStringPainted(true);
             }
     };
+    private ActionListener updateStockDetails=new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           
+        }
+    };
+    public void updateStockDetails(List<SalesBillStock> salesBillStocks,Boolean flag){
+        if(salesBillStocks!=null){
+            startSpinner();
+            for(SalesBillStock salesBillStock:salesBillStocks){
+                PurchaseStock purchaseStock=tradersService.findById(salesBillStock.getRefStockId());
+                if(purchaseStock!=null){
+                    Integer qty=salesBillStock.getQty();
+                    if(flag){
+                         qty=qty-(purchaseStock.getSalesQty()!=null?purchaseStock.getSalesQty():0);
+                    }else{
+                        if(purchaseStock.getSalesQty()!=null){
+                            qty=purchaseStock.getSalesQty()+qty;
+                        }
+                    }
+                    purchaseStock.setSalesQty(qty);
+                    tradersService.save(purchaseStock);
+                }
+            }
+            stopSpinner();
+        }
+    }
+    public void loadData(){
+        singInLabel.setText(userInfoSession.getDisplayName());
+        Dashboard dashboard=salesBillService.findSalesStock();
+        if(dashboard!=null){
+            salesStockLabel.setText(dashboard.getSalesStock().toString());
+            purchaseStockLabel.setText(dashboard.getPurchaseStock().toString());
+        }
+    }
     @Autowired private CountryForm countryForm;
     @Autowired private CategoryForm categoryForm;
     @Autowired private TradersForm tradersForm;
@@ -449,9 +622,18 @@ public class LandingForm extends javax.swing.JFrame {
     @Autowired private UserSignForm userSignForm;
     @Autowired private StockEntryForm stockEntryForm;
     @Autowired private UnitTypeForm unitTypeForm;
+    @Autowired private SalesBillForm salesBillForm;
+    @Autowired private UserInfoSession userInfoSession;
+    @Autowired private LoginForm loginForm;
+    @Autowired private HeaderSetting headerSetting;
+    /*Services*/
+    @Autowired private TradersService tradersService;
+    @Autowired private SalesBillService salesBillService;
     private javax.swing.Timer progressBar;
     private static Integer index=10;
+    private final static Logger LOGGER=LoggerFactory.getLogger(LandingForm.class);
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton headerSettingActionBtn;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -460,6 +642,9 @@ public class LandingForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -471,7 +656,13 @@ public class LandingForm extends javax.swing.JFrame {
     private com.srm.components.JXImagePanel jXImagePanel4;
     private com.srm.components.JXImagePanel jXImagePanel5;
     private com.srm.components.JXImagePanel jXImagePanel6;
+    private com.srm.components.JXImagePanel jXImagePanel7;
     private com.srm.components.JXStatusBar jXStatusBar1;
+    private javax.swing.JButton logOutActionBtn;
+    private javax.swing.JLabel purchaseStockLabel;
+    private javax.swing.JButton salesBillActionBtn;
+    private javax.swing.JLabel salesStockLabel;
+    private javax.swing.JLabel singInLabel;
     private javax.swing.JButton stockActionBtn;
     private javax.swing.JButton unitTypeActionBtn;
     // End of variables declaration//GEN-END:variables

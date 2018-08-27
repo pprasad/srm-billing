@@ -6,7 +6,6 @@
 package com.srm.services.modal;
 
 import java.io.Serializable;
-import javax.swing.ImageIcon;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -55,6 +54,8 @@ public class PurchaseStock implements Serializable{
     private Integer unitDiscount;
     
     private String imageId;
+    
+    private Integer salesQty;
     
 
     public ObjectId getId() {
@@ -176,7 +177,12 @@ public class PurchaseStock implements Serializable{
     public void setImageId(String imageId) {
         this.imageId = imageId;
     }
+    public Integer getSalesQty() {
+        return salesQty;
+    }
 
-    
-    
-}
+    public void setSalesQty(Integer salesQty) {
+        this.salesQty = salesQty;
+    }
+
+ }

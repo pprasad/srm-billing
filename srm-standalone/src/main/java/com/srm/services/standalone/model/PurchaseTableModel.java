@@ -26,8 +26,8 @@ public class PurchaseTableModel extends AbstractTableModel{
     
     private final static Logger LOGGER=LoggerFactory.getLogger(PurchaseTableModel.class);
     
-    private String[] columnNames={TableUtils.TABLE_PURCHASE_SEQ_NO,TableUtils.TABLE_PURCHASE_ITEM_NAME,
-                                  TableUtils.TABLE_PURCHASE_QTY,TableUtils.TABLE_PURCHASE_PRICE,TableUtils.TABLE_PURCHASE_AMOUNT,
+    private String[] columnNames={TableUtils.TABLE_PURCHASE_SEQ_NO,TableUtils.TABLE_PURCHASE_ITEM_NAME,TableUtils.TABLE_PURCHASE_PRICE,
+                                  TableUtils.TABLE_PURCHASE_QTY,TableUtils.TABLE_PURCHASE_AMOUNT,
                                   TableUtils.TABLE_PURCHASE_DISCOUNT,TableUtils.TABLE_PURCHASE_NET_AMT};  
     
     private List<PurchaseStock> purchaseStocks;

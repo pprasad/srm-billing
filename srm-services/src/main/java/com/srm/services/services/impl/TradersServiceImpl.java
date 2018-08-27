@@ -7,19 +7,17 @@ package com.srm.services.services.impl;
 
 import com.srm.services.modal.PurchaseStock;
 import com.srm.services.modal.Purchases;
-import com.srm.services.modal.Sequence;
 import com.srm.services.modal.Traders;
 import com.srm.services.repository.PurchaseStockRepository;
 import com.srm.services.repository.PurchasesRepository;
 import com.srm.services.repository.SequenceRepository;
 import com.srm.services.repository.TradersRepository;
+import com.srm.services.services.SequenceService;
 import com.srm.services.services.TradersService;
 import java.util.List;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 /**
@@ -43,6 +41,9 @@ public class TradersServiceImpl implements TradersService{
     
     @Autowired
     private PurchaseStockRepository purchaseStockRepository;
+    
+    @Autowired
+    private SequenceService sequenceService;
 
     @Override
     public List<Traders> findAllTraders() {
@@ -76,10 +77,7 @@ public class TradersServiceImpl implements TradersService{
 
     @Override
     public Integer getSequence(String id) {
-        Query query=new Query(Criteria.where("seqId").is(id));
-        Update update = new Update().inc("value",1);
-        Sequence sequence=mongoTemplate.findAndModify(query,update,Sequence.class);
-        return sequence.getValue();
+        return sequenceService.getSequence(id);
     }
 
     @Override
@@ -150,6 +148,11 @@ public class TradersServiceImpl implements TradersService{
     @Override
     public List<PurchaseStock> findByIsTransferAndDelete(boolean IsTransfer, boolean delete) {
        return purchaseStockRepository.findByIsTransferAndDelete(IsTransfer,delete);
+    }
+
+    @Override
+    public PurchaseStock findById(ObjectId id) {
+       return purchaseStockRepository.findOne(id);
     }
     
 }

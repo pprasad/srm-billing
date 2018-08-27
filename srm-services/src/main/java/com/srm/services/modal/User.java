@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  * @author umprasad
  */
-@Document
+@Document(collection="UserInfo")
 public class User {
     @Id
     private String emailId;

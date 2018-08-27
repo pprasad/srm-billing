@@ -22,6 +22,7 @@ import javax.swing.DefaultComboBoxModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 
 /**
  *
@@ -530,7 +531,7 @@ public class UserSignForm extends javax.swing.JDialog {
             user.setDisplayName(displaynameTxt.getText());
             user.setMobileNo(mobileNoTxt.getText());
            if(!StandaloneUtils.emailValidation(user.getEmailId(), errorMsg) && 
-                   !StandaloneUtils.passwordValidation(user.getPassword(),cfmPasswordTxt.getPassword().toString(),errorMsg)){ 
+                   !StandaloneUtils.passwordValidation(passwordTxt.getText(),cfmPasswordTxt.getText(),errorMsg)){ 
                User savedUser=userService.save(user);
                users.add(savedUser);
                StandaloneUtils.dialogBox(ServiceConstant.ACTION_SAVE,this);
@@ -547,12 +548,11 @@ public class UserSignForm extends javax.swing.JDialog {
     }//GEN-LAST:event_saveActionBtnActionPerformed
 
     private void countryActionBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_countryActionBoxItemStateChanged
-       String value=null;
-       value=countryActionBox.getSelectedItem().toString();
-       if(evt.getStateChange()==ItemEvent.SELECTED && countryActionBox.getSelectedIndex()!=0){
+       Object value=countryActionBox.getSelectedItem();
+       if(!StringUtils.isEmpty(value) && !ServiceConstant.DEFAULT_VALUE.equals(value)){
             LOGGER.info("Selected Value{}"+value);
             stateActionBox.removeAllItems();
-            List<State> states=userService.findStatesByCoutryName(value);
+            List<State> states=userService.findStatesByCoutryName(value.toString());
             ((DefaultComboBoxModel)stateActionBox.getModel()).addElement(ServiceConstant.DEFAULT_VALUE);
             if(states!=null){
                 states.forEach(state->((DefaultComboBoxModel)stateActionBox.getModel()).addElement(state.getStateName()));
@@ -673,6 +673,7 @@ public class UserSignForm extends javax.swing.JDialog {
     }//GEN-LAST:event_updateActionBtnActionPerformed
     @PostConstruct
     private void loadData(){
+        countryActionBox.removeAllItems();
         countryModel.addElement(ServiceConstant.DEFAULT_VALUE);
         countrys=userService.findCountries();
         countryActionBox.setModel(countryModel);

@@ -7,7 +7,6 @@ package com.srm.services.services.impl;
 
 import com.srm.services.modal.City;
 import com.srm.services.modal.Country;
-import com.srm.services.modal.ProductType;
 import com.srm.services.modal.State;
 import com.srm.services.modal.User;
 import com.srm.services.repository.CountryRepository;
@@ -95,6 +94,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public void delete(User user) {
         userRepository.delete(user);
+    }
+
+    @Override
+    public User findById(String id) {
+        return userRepository.findOne(id);
     }
 
 }

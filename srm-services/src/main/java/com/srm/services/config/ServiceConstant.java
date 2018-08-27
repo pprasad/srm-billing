@@ -38,4 +38,11 @@ public class ServiceConstant {
     public static final String CONFIRM_PWD="Password does not matched";
     public static final String TECHNICAL_ERROR_MSG="Techinical Error,Please try later";
     public static final String TRADER_SEQ_KEY="PURCHASES_SEQ";
+    public static final String SALES_BILL_SEQ="SALES_BILL_SEQ";
+    /*Error Messages*/
+    public static final String ERROR_MSG_CUSTOMER="Please Select Customer";
+    public static final String ERROR_MSG_DATE="Sales Bill Date is Required";
+    public static final String ERROR_MSG_RECORD="Please Select record before Deleting";
+    public static final String ERROR_MSG_INVALID="InValid UserName & Password";
+   
 }

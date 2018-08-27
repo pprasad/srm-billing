@@ -474,8 +474,8 @@ public class PurchasesForm extends javax.swing.JDialog {
     private void calTotalAmt(){
        LOGGER.info("VaT Tax{}",vatTxt.getInt());
        Double amount=(vatTxt.getInt()*totalAmtTxt.getDouble())/100;
-       amount=totalAmtTxt.getDouble()-amount;
-       amount=amount-(gstTaxTxt.getInt()*amount)/100;
+       amount=totalAmtTxt.getDouble()+amount;
+       amount=amount+(gstTaxTxt.getInt()*amount)/100;
        netAmtTxt.setValue(amount);
     }
     private void clear(){
@@ -556,6 +556,7 @@ public class PurchasesForm extends javax.swing.JDialog {
         vatTxt.setValue(purchases.getVat());
         gstTaxTxt.setValue(purchases.getGstTax());
         netAmtTxt.setValue(purchases.getNetAmt());
+        purchaseTableModel.removeRows();
         List<PurchaseStock> purchaseStocks=tradersService.findByRefereNoAndDelete(purchases.getRefereNo(),false);
         if(purchaseStocks!=null){
             purchaseTableModel.addRows(purchaseStocks);

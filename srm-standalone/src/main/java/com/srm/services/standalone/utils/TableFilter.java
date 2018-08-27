@@ -18,11 +18,12 @@ import javax.swing.table.TableRowSorter;
  *
  * @author umprasad
  */
-public class TableFilter {
+public class TableFilter<T> {
     private JTable jTable;
     private RowSorter<? extends TableModel> rowSorter;
     private TableRowSorter<? extends TableModel> tableRowSorter;
     private JTextField jTextField;
+    private T seleModel;
 
     public TableFilter(JTable jTable,JTextField jTextField) {
         this.jTable = jTable;
@@ -59,6 +60,8 @@ public class TableFilter {
                   tableRowSorter.setRowFilter(null);
              }else{
                   tableRowSorter.setRowFilter(RowFilter.regexFilter("(?i)" +text));
+                  seleModel=(T)tableRowSorter.getModel();
+                  
              }
         }
     };

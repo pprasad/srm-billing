@@ -9,6 +9,7 @@ import com.srm.services.modal.PurchaseStock;
 import com.srm.services.modal.Purchases;
 import com.srm.services.modal.Traders;
 import java.util.List;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -36,6 +37,7 @@ public interface TradersService {
     List<PurchaseStock> findByRefereNoAndDelete(Integer refereNo,boolean delete);
     List<PurchaseStock> findByDelete(boolean delete);
     List<PurchaseStock> findByIsTransferAndDelete(boolean IsTransfer,boolean delete);
+    PurchaseStock findById(ObjectId id);
     
     
 }

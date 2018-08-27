@@ -19,7 +19,7 @@ public class Sequence implements Serializable{
     @Id
     private String seqId;
     
-    private Integer value;
+    private Long value;
 
     public String getSeqId() {
         return seqId;
@@ -29,14 +29,11 @@ public class Sequence implements Serializable{
         this.seqId = seqId;
     }
 
-    public Integer getValue() {
+    public Long getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Long value) {
         this.value = value;
     }
-
-   
-    
 }

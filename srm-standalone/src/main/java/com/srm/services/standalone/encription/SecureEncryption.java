@@ -31,12 +31,14 @@ public class SecureEncryption {
         Key key = new SecretKeySpec(keyValue, ALGO);
         return key;
     }
-    public String encrypt(String Data) throws Exception {
+    public String encrypt(String data) throws Exception {
+            LOGGER.info("Data{}",data);
             Key key = generateKey();
             Cipher c = Cipher.getInstance(ALGO);
             c.init(Cipher.ENCRYPT_MODE, key);
-            byte[] encVal = c.doFinal(Data.getBytes());
+            byte[] encVal = c.doFinal(data.getBytes());
             String encryptedValue = DatatypeConverter.printBase64Binary(encVal);
+            LOGGER.info("Encrypted Data{}",encryptedValue);
             return encryptedValue;
     }
     public String decrypt(String encryptedData) throws Exception {

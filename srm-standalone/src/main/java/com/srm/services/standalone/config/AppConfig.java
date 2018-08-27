@@ -7,18 +7,21 @@ package com.srm.services.standalone.config;
 
 import com.srm.services.standalone.controller.CategoryForm;
 import com.srm.services.standalone.controller.CountryForm;
+import com.srm.services.standalone.controller.CustomerForm;
 import com.srm.services.standalone.controller.PurchasesForm;
+import com.srm.services.standalone.controller.SalesBillForm;
+import com.srm.services.standalone.controller.SalesBillInfoForm;
 import com.srm.services.standalone.controller.StockEntryForm;
 import com.srm.services.standalone.controller.TradersForm;
 import com.srm.services.standalone.controller.UnitTypeForm;
 import com.srm.services.standalone.controller.UserSignForm;
 import com.srm.services.standalone.launch.LoginForm;
+import com.srm.services.standalone.settings.HeaderSetting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 
 /**
  *
@@ -69,5 +72,20 @@ public class AppConfig {
     public UnitTypeForm getUnitTypeForm(){
         return new UnitTypeForm(null, true);
     }
-    
+    @Bean
+    public SalesBillForm getSalesBillForm(){
+        return new SalesBillForm();
+    }
+    @Bean
+    public CustomerForm getCustmerForm(){
+        return new CustomerForm(null, true);
+    }
+    @Bean
+    public SalesBillInfoForm getSalesBillInfo(){
+        return new SalesBillInfoForm(null, true);
+    }
+    @Bean
+    public HeaderSetting getHeaderSettings(){
+        return new HeaderSetting();
+    }
 }

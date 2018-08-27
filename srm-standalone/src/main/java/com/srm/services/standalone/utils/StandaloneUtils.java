@@ -9,6 +9,8 @@ import com.srm.services.config.ServiceConstant;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -33,6 +35,10 @@ public class StandaloneUtils {
         }catch(Exception ex){
             LOGGER.error("Exception",ex);
         }
+    }
+    public static void setScreenCenterLocation(JFrame jFrame){
+        Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
+        jFrame.setLocation(screen.width/3, screen.height/3);
     }
     public static void setScreenCenter(JDialog jdialogForm,JFrame parent){
         jdialogForm.setLocationRelativeTo(parent);
@@ -82,5 +88,9 @@ public class StandaloneUtils {
         }else{
             return true;
         }
+    }
+    public static String getSystemDate(){
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/mm/yyyy HH:mm");
+        return simpleDateFormat.format(new Date());
     }
 }

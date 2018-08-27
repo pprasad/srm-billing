@@ -86,6 +86,8 @@ public class StockEntryForm extends javax.swing.JDialog {
         uploadActionBtn = new javax.swing.JButton();
         saveActionBtn = new javax.swing.JButton();
         refreshActionBtn = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        salesQtyTxt = new com.srm.components.JxNumberTextField();
         jXImagePanel1 = new com.srm.components.JXImagePanel();
         jLabel9 = new javax.swing.JLabel();
         searchfilterTxt = new javax.swing.JTextField();
@@ -163,14 +165,21 @@ public class StockEntryForm extends javax.swing.JDialog {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Elephant", 0, 18)); // NOI18N
+        jLabel11.setText("Sales Qty");
+
         javax.swing.GroupLayout jXImagePanel2Layout = new javax.swing.GroupLayout(jXImagePanel2);
         jXImagePanel2.setLayout(jXImagePanel2Layout);
         jXImagePanel2Layout.setHorizontalGroup(
             jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
+                .addGap(43, 43, 43)
+                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jXImagePanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addComponent(salesQtyTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jXImagePanel2Layout.createSequentialGroup()
                         .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXImagePanel2Layout.createSequentialGroup()
@@ -180,35 +189,36 @@ public class StockEntryForm extends javax.swing.JDialog {
                                     .addComponent(jLabel4)
                                     .addGap(70, 70, 70)))
                             .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel8))
+                                .addComponent(jLabel5)
                                 .addGap(25, 25, 25)))
-                        .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(itemCodeTxt)
-                                .addComponent(priceTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                                .addComponent(unitPriceTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(discountTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(itemCodeTxt)
+                            .addComponent(priceTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                            .addComponent(unitPriceTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(refreshActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jXImagePanel2Layout.createSequentialGroup()
+                                .addComponent(saveActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(refreshActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(discountTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(77, 77, 77)
-                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(uploadActionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(47, 47, 47)
+                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(uploadActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(qtyTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(itemNameTxt)
                     .addComponent(unitTypeBox, 0, 294, Short.MAX_VALUE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         jXImagePanel2Layout.setVerticalGroup(
             jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,37 +229,47 @@ public class StockEntryForm extends javax.swing.JDialog {
                     .addComponent(itemCodeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(itemNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(qtyTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(32, 32, 32)
-                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(unitPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(unitTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                        .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(discountTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
+                        .addGap(18, 18, 18)
+                        .addComponent(qtyTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(unitTypeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(41, 41, 41))
+                    .addGroup(jXImagePanel2Layout.createSequentialGroup()
                         .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jXImagePanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(uploadActionBtn))
-                            .addGroup(jXImagePanel2Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
                                 .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(saveActionBtn)
-                                    .addComponent(refreshActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 50, Short.MAX_VALUE)))
-                .addContainerGap())
+                                    .addComponent(jLabel4)
+                                    .addComponent(priceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(unitPriceTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(17, 17, 17)
+                                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(salesQtyTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(discountTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jXImagePanel2Layout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(jLabel7)
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(uploadActionBtn)))
+                        .addGap(33, 33, 33)
+                        .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saveActionBtn)
+                            .addComponent(refreshActionBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(57, Short.MAX_VALUE))))
         );
 
         jXImagePanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Stock In", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Elephant", 0, 18))); // NOI18N
@@ -288,7 +308,7 @@ public class StockEntryForm extends javax.swing.JDialog {
                         .addComponent(jLabel9)
                         .addGap(39, 39, 39)
                         .addComponent(searchfilterTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jXImagePanel1Layout.setVerticalGroup(
             jXImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,10 +381,14 @@ public class StockEntryForm extends javax.swing.JDialog {
     }//GEN-LAST:event_uploadActionBtnActionPerformed
 
     private void stockinTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stockinTableMouseClicked
+       PurchaseStock purchaseStock=null;
        int row=stockinTable.getSelectedRow();
        try{
+            if(stockinTable.getRowSorter()!=null){
+                row=stockinTable.getRowSorter().convertRowIndexToModel(row);
+            }
             if(row!=-1){
-                PurchaseStock purchaseStock=purchaseTableModel.getRow(row);
+                purchaseStock=purchaseTableModel.getRow(row);
                 seleObj=purchaseStock;
                 Product product=purchaseStock.getProduct();
                 itemCodeTxt.setText(product.getProdCode());
@@ -372,6 +396,7 @@ public class StockEntryForm extends javax.swing.JDialog {
                 priceTxt.setValue(purchaseStock.getPrice());
                 qtyTxt.setValue(purchaseStock.getQty());
                 unitPriceTxt.setValue(purchaseStock.getUnitPrice()!=null?purchaseStock.getUnitPrice():0d);
+                salesQtyTxt.setValue(seleObj.getSalesQty());
                 UnitType unitType=purchaseStock.getUnitType();
                 if(unitType!=null){
                     unitTypeBoxModel.setSelectedItem(unitType);
@@ -397,6 +422,7 @@ public class StockEntryForm extends javax.swing.JDialog {
         try{
              if(seleObj!=null){
                   seleObj.setUnitPrice(unitPriceTxt.getDouble());
+                  seleObj.setSalesQty(salesQtyTxt.getInt());
                   UnitType unitType=(UnitType)unitTypeBox.getSelectedItem();
                   if(unitType!=null){
                      seleObj.setUnitType(unitType);
@@ -451,6 +477,7 @@ public class StockEntryForm extends javax.swing.JDialog {
         priceTxt.clear();
         qtyTxt.clear();
         unitPriceTxt.clear();
+        salesQtyTxt.clear();
         discountTxt.clear();
         unitTypeBox.setSelectedItem(ServiceConstant.DEFAULT_VALUE);
         imagePanel.setIcon(null);
@@ -486,6 +513,7 @@ public class StockEntryForm extends javax.swing.JDialog {
     private javax.swing.JTextField itemNameTxt;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -502,6 +530,7 @@ public class StockEntryForm extends javax.swing.JDialog {
     private com.srm.components.JxCurrencyTextField priceTxt;
     private com.srm.components.JxNumberTextField qtyTxt;
     private javax.swing.JButton refreshActionBtn;
+    private com.srm.components.JxNumberTextField salesQtyTxt;
     private javax.swing.JButton saveActionBtn;
     private javax.swing.JTextField searchfilterTxt;
     private javax.swing.JTable stockinTable;

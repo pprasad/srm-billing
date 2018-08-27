@@ -102,6 +102,9 @@ public class PurchaseSearchPanel extends javax.swing.JPanel {
     private void searchPurchaseTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchPurchaseTableMouseClicked
        try{
            int row=searchPurchaseTable.getSelectedRow();
+           if(searchPurchaseTable.getRowSorter()!=null){
+               row=searchPurchaseTable.getRowSorter().convertRowIndexToModel(row);
+           }
            if(row!=-1){
                Purchases purchases=purchaseTableModel.getRow(row);
                listener.dataSelected(purchases);

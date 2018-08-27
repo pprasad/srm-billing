@@ -48,4 +48,20 @@ public class TableUtils {
     public static final String TABLE_UNIT_MNEMONIC="Mnemonic";
     public static final String TABLE_UNIT_DESC="Description";
     
+    public static final String TABLE_BILL_ITEM_NAME="Item Name";
+    public static final String TABLE_BILL_PRICE="Price";
+    public static final String TABLE_BILL_QTY="Qty";
+    public static final String TABLE_BILL_UNIT="Units";
+    public static final String TABLE_BILL_AMOUNT="Amount";
+    public static final String TABLE_BILL_DISCOUNT="Dis(%)";
+    public static final String TABLE_BILL_NET_AMT="Net Amount";
+    
+    public static final String TABLE_CUSTOMER_NAME="NAME";
+    public static final String TABLE_CUSTOMER_MOBILE="Mobile No.,";
+    public static final String TABLE_CUSTOMER_EMAIL_ID="Email Id";
+    
+    public static final String TABLE_BILL_NO="Bill No";
+    public static final String TABLE_BILL_NAME="Customer Name";
+    public static final String TABLE_BILL_DATE="Bill Date";
+    
 }

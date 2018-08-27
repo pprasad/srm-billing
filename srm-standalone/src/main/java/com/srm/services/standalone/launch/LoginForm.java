@@ -5,12 +5,19 @@
  */
 package com.srm.services.standalone.launch;
 
+import com.srm.services.config.ServiceConstant;
+import com.srm.services.modal.User;
+import com.srm.services.services.UserService;
 import com.srm.services.standalone.controller.LandingForm;
+import com.srm.services.standalone.encription.SecureEncryption;
+import com.srm.services.standalone.model.UserInfoSession;
 import com.srm.services.standalone.utils.StandaloneUtils;
+import java.awt.Color;
 import javax.swing.JFrame;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 /**
  *
  * @author umprasad
@@ -38,9 +45,9 @@ public class LoginForm extends javax.swing.JFrame {
         jXImagePanel2 = new com.srm.components.JXImagePanel();
         jXImagePanel1 = new com.srm.components.JXImagePanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        userNameTxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        passwordTxt = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -70,9 +77,9 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Engravers MT", 0, 18)); // NOI18N
         jLabel1.setText("User ID");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        userNameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                userNameTxtActionPerformed(evt);
             }
         });
 
@@ -108,8 +115,8 @@ public class LoginForm extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54)
                         .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
+                            .addComponent(passwordTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                            .addComponent(userNameTxt)))
                     .addGroup(jXImagePanel2Layout.createSequentialGroup()
                         .addGap(246, 246, 246)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -125,11 +132,11 @@ public class LoginForm extends javax.swing.JFrame {
                         .addGap(127, 127, 127)
                         .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(userNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
                         .addGroup(jXImagePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jXImagePanel2Layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(jXImagePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -156,9 +163,9 @@ public class LoginForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void userNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_userNameTxtActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -166,23 +173,84 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
-        StandaloneUtils.setScreenCenter(landingForm);
-        landingForm.setAlwaysOnTop(true);
-        landingForm.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        landingForm.show();
+        LOGGER.info("*************Process The Authorization****************");
+        if(!isValidteUser() && !isValidtePwd()){
+            if(isValidate()){
+                 this.setVisible(false);
+                 clear();
+                 StandaloneUtils.setScreenCenter(landingForm);
+                 landingForm.setAlwaysOnTop(true);
+                 landingForm.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                 landingForm.loadData();
+                 landingForm.show();
+           }else{
+                StandaloneUtils.dialogBox(ServiceConstant.ERROR_MSG_INVALID, rootPane);
+            }
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    private boolean isValidate(){
+       boolean flag=false;
+       LOGGER.info("********************isValidating***************************");
+       try{
+            String name=userNameTxt.getText();
+            LOGGER.info("UserName{}",name);
+            String pwd=passwordTxt.getText();
+            LOGGER.info("Password{}",pwd);
+            pwd=encryption.encrypt(pwd);
+            LOGGER.info("Encripted Password{}",pwd);
+            User userInfo=userService.findById(name);
+            if(userInfo!=null && pwd.equals(userInfo.getPassword())){
+                 LOGGER.info("Password{}",userInfo.getPassword());
+                 userInfoSession.setDisplayName(userInfo.getDisplayName());
+                 userInfoSession.setEmailId(userInfo.getEmailId());
+                 userInfoSession.setMobileNo(userInfo.getMobileNo());
+                 flag=true;
+            }
+        }catch(Exception ex){
+           LOGGER.error("Exception{}",ex);
+        }
+        return flag;
+    }
+    private boolean isValidteUser(){
+        boolean flag=false;
+        if(StringUtils.isEmpty(userNameTxt.getText())){
+            userNameTxt.setBackground(Color.red);
+            flag=true;
+        }else{
+            userNameTxt.setBackground(Color.WHITE);
+        }
+        return flag;
+    }
+    private boolean isValidtePwd(){
+        boolean flag=false;
+        if(StringUtils.isEmpty(passwordTxt.getText())){
+            passwordTxt.setBackground(Color.red);
+            flag=true;
+        }else{
+            passwordTxt.setBackground(Color.WHITE);
+        }
+        return flag;
+    }
+    public void clear(){
+        userNameTxt.setText("");
+        passwordTxt.setText("");
+               
+    }
+    @Autowired private UserService userService;
     @Autowired private LandingForm landingForm; 
+    @Autowired private SecureEncryption encryption;
+    @Autowired private UserInfoSession userInfoSession;
+    private final static Logger LOGGER=LoggerFactory.getLogger(LoginForm.class);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private com.srm.components.JXImagePanel jXImagePanel1;
     private com.srm.components.JXImagePanel jXImagePanel2;
+    private javax.swing.JPasswordField passwordTxt;
+    private javax.swing.JTextField userNameTxt;
     // End of variables declaration//GEN-END:variables
 }
